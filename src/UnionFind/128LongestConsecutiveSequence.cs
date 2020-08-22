@@ -11,7 +11,12 @@ namespace LongestConsecutiveSequence
 {
     using System.Collections.Generic;
 
-    public class Solution
+    interface ISolution
+    {
+        int LongestConsecutive(int[] nums);
+    }
+
+    public class Solution : ISolution
     {
         public int LongestConsecutive(int[] nums)
         {
@@ -48,6 +53,38 @@ namespace LongestConsecutiveSequence
         }
     }
 
+    public class Solution2 : ISolution
+    {
+        // a much shorter solution but the performance is similar
+        public int LongestConsecutive(int[] nums)
+        {
+            var nums_set = new HashSet<int>();
+            foreach (var n in nums)
+            {
+                nums_set.Add(n);
+            }
+
+            var maxLen = 0;
+
+            foreach (var n in nums)
+            {
+                if (!nums_set.Contains(n - 1))
+                {
+                    var currentN = n;
+                    var len = 1;
+                    // look forward
+                    while (nums_set.Contains(currentN + 1))
+                    {
+                        currentN += 1;
+                        len += 1;
+                    }
+                    maxLen = maxLen < len ? len : maxLen;
+                }
+            }
+            return maxLen;
+        }
+    }
+
     struct UF
     {
         int[] id;
@@ -65,6 +102,7 @@ namespace LongestConsecutiveSequence
                 sz[i] = 1;
                 roots.Add(i);
             }
+
         }
 
         public void union(int p, int q)
