@@ -1,0 +1,116 @@
+/*
+ * File: 128LongestConsecutiveSequence.cs
+ * Project: UnionFind
+ * Created Date: Saturday, 22nd August 2020 5:59:23 pm
+ * Author: David Gu, macdavid313@gmail.com
+ * Copyright (c) David Gu 2020
+ */
+
+
+namespace LongestConsecutiveSequence
+{
+    using System.Collections.Generic;
+
+    public class Solution
+    {
+        public int LongestConsecutive(int[] nums)
+        {
+            // return early if corner cases found
+            switch (nums.Length)
+            {
+                case 0: return 0;
+                case 1: return 1;
+            }
+
+            var uf = new UF(nums.Length);
+            var ht = new Dictionary<int, int>(nums.Length);
+            for (var i = 0; i < nums.Length; i++)
+            {
+                if (!ht.ContainsKey(nums[i]))
+                {
+                    ht.Add(nums[i], i);
+                }
+            }
+            for (var i = 0; i < nums.Length; i++)
+            {
+                var n = nums[i];
+                if (ht[n] != i) continue; // ignore duplicate elements
+                if (ht.ContainsKey(n - 1))
+                {
+                    uf.union(i, ht[n - 1]);
+                }
+                if (ht.ContainsKey(n + 1))
+                {
+                    uf.union(i, ht[n + 1]);
+                }
+            }
+            return uf.maxSize();
+        }
+    }
+
+    struct UF
+    {
+        int[] id;
+        int[] sz;
+        HashSet<int> roots;
+
+        public UF(int n)
+        {
+            id = new int[n];
+            sz = new int[n];
+            roots = new HashSet<int>();
+            for (var i = 0; i < n; i++)
+            {
+                id[i] = i;
+                sz[i] = 1;
+                roots.Add(i);
+            }
+        }
+
+        public void union(int p, int q)
+        {
+            var pRoot = find(p);
+            var qRoot = find(q);
+            if (pRoot == qRoot)
+            {
+                return;
+            }
+
+            if (sz[pRoot] < sz[qRoot])
+            {
+                id[pRoot] = qRoot;
+                sz[qRoot] += sz[pRoot];
+                roots.Remove(pRoot);
+            }
+            else
+            {
+                id[qRoot] = pRoot;
+                sz[pRoot] += sz[qRoot];
+                roots.Remove(qRoot);
+            }
+        }
+
+        int find(int i)
+        {
+            while (id[i] != i)
+            {
+                id[i] = id[id[i]];
+                i = id[i];
+            }
+            return i;
+        }
+
+        public int maxSize()
+        {
+            int max = -1;
+            foreach (int root in roots)
+            {
+                if (sz[root] > max)
+                {
+                    max = sz[root];
+                }
+            }
+            return max;
+        }
+    }
+}
