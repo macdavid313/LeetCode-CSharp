@@ -3,6 +3,8 @@
  * Project: Misc
  * Created Date: Sunday, 23rd August 2020 3:33:59 pm
  * Author: David Gu (macdavid313@gmail.com)
+ * Runtime: 228 ms, faster than 7.69% of C# online submissions for Smallest Range I.
+ * Memory Usage: 28.1 MB, less than 100.00% of C# online submissions for Smallest Range I.
  * Copyright (c) David Gu 2020
  */
 
