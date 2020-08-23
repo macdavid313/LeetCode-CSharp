@@ -42,14 +42,14 @@ namespace LongestConsecutiveSequence
                 if (ht[n] != i) continue; // ignore duplicate elements
                 if (ht.ContainsKey(n - 1))
                 {
-                    uf.union(i, ht[n - 1]);
+                    uf.Union(i, ht[n - 1]);
                 }
                 if (ht.ContainsKey(n + 1))
                 {
-                    uf.union(i, ht[n + 1]);
+                    uf.Union(i, ht[n + 1]);
                 }
             }
-            return uf.maxSize();
+            return uf.MaxSize();
         }
     }
 
@@ -87,9 +87,9 @@ namespace LongestConsecutiveSequence
 
     struct UF
     {
-        int[] id;
-        int[] sz;
-        HashSet<int> roots;
+        readonly int[] id;
+        readonly int[] sz;
+        readonly HashSet<int> roots;
 
         public UF(int n)
         {
@@ -105,10 +105,10 @@ namespace LongestConsecutiveSequence
 
         }
 
-        public void union(int p, int q)
+        public void Union(int p, int q)
         {
-            var pRoot = find(p);
-            var qRoot = find(q);
+            var pRoot = Find(p);
+            var qRoot = Find(q);
             if (pRoot == qRoot)
             {
                 return;
@@ -128,7 +128,7 @@ namespace LongestConsecutiveSequence
             }
         }
 
-        int find(int i)
+        int Find(int i)
         {
             while (id[i] != i)
             {
@@ -138,7 +138,7 @@ namespace LongestConsecutiveSequence
             return i;
         }
 
-        public int maxSize()
+        public int MaxSize()
         {
             int max = -1;
             foreach (int root in roots)
