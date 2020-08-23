@@ -9,8 +9,6 @@
 
 using Xunit;
 using EvaluateDivision;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace UnionFindTests
 {
