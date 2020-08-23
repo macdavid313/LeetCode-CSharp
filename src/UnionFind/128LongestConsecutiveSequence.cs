@@ -3,8 +3,8 @@
  * Project: UnionFind
  * Created Date: Saturday, 22nd August 2020 5:59:23 pm
  * Author: David Gu, macdavid313@gmail.com
- * Runtime: 168 ms, faster than 22.38% of C# online submissions for Longest Consecutive Sequence.
- * Memory Usage: 26.2 MB, less than 10.83% of C# online submissions for Longest Consecutive Sequence.
+ * Runtime: 148 ms, faster than 31.12% of C# online submissions for Longest Consecutive Sequence.
+ * Memory Usage: 26.5 MB, less than 9.43% of C# online submissions for Longest Consecutive Sequence.
  * Copyright (c) David Gu 2020
  */
 
@@ -87,7 +87,7 @@ namespace LongestConsecutiveSequence
         }
     }
 
-    struct UF
+    class UF
     {
         readonly int[] id;
         readonly int[] sz;
