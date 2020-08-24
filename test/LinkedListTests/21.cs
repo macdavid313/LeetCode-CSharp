@@ -16,7 +16,7 @@ namespace LinkedListTests
     {
         readonly Solution sln = new Solution();
 
-        bool ListNodeEquals(ListNode l1, ListNode l2)
+        bool LinkedListEquals(ListNode l1, ListNode l2)
         {
             while (true)
             {
@@ -39,7 +39,7 @@ namespace LinkedListTests
             var l2 = (ListNode)null;
             var expected = (ListNode)null;
             var actual = sln.MergeTwoLists(l1, l2);
-            Assert.True(ListNodeEquals(expected, actual));
+            Assert.True(LinkedListEquals(expected, actual));
         }
 
         [Fact]
@@ -49,7 +49,7 @@ namespace LinkedListTests
             var l2 = ListNode.FromArray(new int[] { 1, 3, 4 });
             var expected = ListNode.FromArray(new int[] { 1, 1, 2, 3, 4, 4 });
             var actual = sln.MergeTwoLists(l1, l2);
-            Assert.True(ListNodeEquals(expected, actual));
+            Assert.True(LinkedListEquals(expected, actual));
         }
 
         [Fact]
@@ -59,7 +59,7 @@ namespace LinkedListTests
             var l2 = ListNode.FromArray(new int[] { 2, 4, 6 });
             var expected = ListNode.FromArray(new int[] { 1, 2, 3, 4, 5, 6, 7 });
             var actual = sln.MergeTwoLists(l1, l2);
-            Assert.True(ListNodeEquals(expected, actual));
+            Assert.True(LinkedListEquals(expected, actual));
         }
     }
 }
