@@ -3,6 +3,8 @@
  * Project: Stack
  * Created Date: Monday, 24th August 2020 4:26:37 pm
  * Author: David Gu (macdavid313@gmail.com)
+ * Runtime: 112 ms, faster than 47.72% of C# online submissions for Trapping Rain Water.
+ * Memory Usage: 25.3 MB, less than 19.37% of C# online submissions for Trapping Rain Water.
  * Copyright (c) David Gu 2020
  */
 
@@ -102,6 +104,46 @@ namespace MyStack
             {
                 Array.Resize(ref arr, arr.Length / 2);
             }
+            return item;
+        }
+    }
+
+    public ref struct MyStackSpan<T>
+    {
+        readonly Span<T> memory;
+        int ptr;
+
+        public int Size { get => ptr; }
+
+        public int MaxCapacity { get => memory.Length; }
+
+        public MyStackSpan(Span<T> memory)
+        {
+            this.memory = memory;
+            ptr = 0;
+        }
+
+        public bool IsEmpty() => ptr == 0;
+
+        public void Push(T item)
+        {
+            if (Size == MaxCapacity)
+            {
+                throw new InvalidOperationException("Stack is full, can't push anymore.");
+            }
+            memory[ptr] = item;
+            ptr += 1;
+        }
+
+        public T Pop()
+        {
+            if (Size == 0)
+            {
+                throw new InvalidProgramException("Can't pop from an empty stack");
+            }
+            ptr -= 1;
+            var item = memory[ptr];
+            memory[ptr] = default;
             return item;
         }
     }
