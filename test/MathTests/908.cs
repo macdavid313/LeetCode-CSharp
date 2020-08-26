@@ -10,7 +10,7 @@ using System;
 using Xunit;
 using SmallestRangeI;
 
-namespace MiscTests
+namespace MathTests
 {
     public class SmallestRangeITest
     {
