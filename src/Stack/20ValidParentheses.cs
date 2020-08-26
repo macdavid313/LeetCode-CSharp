@@ -3,8 +3,8 @@
  * Project: Stack
  * Created Date: Wednesday, 26th August 2020 12:30:16 pm
  * Author: David Gu (macdavid313@gmail.com)
- * Runtime: 68 ms, faster than 96.54% of C# online submissions for Valid Parentheses.
- * Memory Usage: 21.8 MB, less than 78.81% of C# online submissions for Valid Parentheses.
+ * Runtime: 72 ms, faster than 89.18% of C# online submissions for Valid Parentheses.
+ * Memory Usage: 21.6 MB, less than 90.66% of C# online submissions for Valid Parentheses.
  * Copyright (c) David Gu 2020
  */
 
@@ -20,7 +20,7 @@ namespace ValidParentheses
             if (s.Length == 0) return true;
             if (s.Length % 2 == 1) return false;
 
-            Span<char> chars = stackalloc char[s.Length];
+            Span<char> chars = stackalloc char[s.Length / 2 + 1];
             var stack = new MyStackSpan<char>(chars);
             foreach (char c in s)
             {
