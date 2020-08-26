@@ -69,15 +69,15 @@ namespace MyStack
         T[] arr;
         int ptr;
 
+        public int Size { get => ptr; }
+
         public MyStackArray()
         {
             arr = new T[1];
             ptr = 0;
         }
 
-        public bool IsEmpty() => ptr == 0;
-
-        public int Size() => ptr;
+        public bool IsEmpty() => Size == 0;
 
         public void Push(T item)
         {
