@@ -108,7 +108,7 @@ namespace MyStack
         }
     }
 
-    public ref struct MyStackSpan<T>
+    ref struct MyStackSpan<T>
     {
         readonly Span<T> memory;
         int ptr;
