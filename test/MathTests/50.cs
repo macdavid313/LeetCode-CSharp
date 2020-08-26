@@ -10,7 +10,7 @@ using System;
 using Xunit;
 using MyPow;
 
-namespace MathTest
+namespace MathTests
 {
     public class MyPowTest
     {
