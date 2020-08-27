@@ -6,6 +6,7 @@ A set of problems dedicated to **Linked List**.
 | :---: | :-----------------------------------------------------------------------------: | :--------: | :----: | :---: |
 |  21   | [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/) |    Easy    | O(m*n) | O(n)  |
 |   2   |        [Add Two Numbers](https://leetcode.com/problems/add-two-numbers/)        |   Medium   |  O(n)  | O(1)  |
+|  206  |    [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/)    |    Easy    |  O(n)  | O(1)  |
 
 ## References
 
