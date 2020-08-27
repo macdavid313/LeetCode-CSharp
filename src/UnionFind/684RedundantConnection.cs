@@ -29,7 +29,7 @@ namespace RedundantConnection
         }
     }
 
-    public ref struct SpanUF
+    ref struct SpanUF
     {
         readonly Span<int> id;
         readonly Span<int> sz;
