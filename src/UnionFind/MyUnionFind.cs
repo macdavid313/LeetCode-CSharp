@@ -48,14 +48,11 @@ namespace MyUnionFind
             }
         }
 
-        int Find(int i)
+        public int Find(int i)
         {
-            while (id[i] != i)
-            {
-                id[i] = id[id[i]];
-                i = id[i];
-            }
-            return i;
+            if (id[i] != i)
+                id[i] = Find(id[i]);
+            return id[i];
         }
 
         public bool Connected(int p, int q) => Find(p) == Find(q);
@@ -101,12 +98,9 @@ namespace MyUnionFind
 
         public int Find(int i)
         {
-            while (id[i] != i)
-            {
-                id[i] = id[id[i]];
-                i = id[i];
-            }
-            return i;
+            if (id[i] != i)
+                id[i] = Find(id[i]);
+            return id[i];
         }
 
         public bool Connected(int p, int q) => Find(p) == Find(q);
