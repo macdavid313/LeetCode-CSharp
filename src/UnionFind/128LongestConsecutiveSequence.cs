@@ -3,8 +3,8 @@
  * Project: UnionFind
  * Created Date: Saturday, 22nd August 2020 5:59:23 pm
  * Author: David Gu, macdavid313@gmail.com
- * Runtime: 148 ms, faster than 31.12% of C# online submissions for Longest Consecutive Sequence.
- * Memory Usage: 26.5 MB, less than 9.43% of C# online submissions for Longest Consecutive Sequence.
+ * Runtime: 100 ms, faster than 75.82% of C# online submissions for Longest Consecutive Sequence.
+ * Memory Usage: 26.6 MB, less than 11.44% of C# online submissions for Longest Consecutive Sequence.
  * Copyright (c) David Gu 2020
  */
 
@@ -55,6 +55,10 @@ namespace LongestConsecutiveSequence
         }
     }
 
+    /*
+    * Runtime: 92 ms, faster than 96.08% of C# online submissions for Longest Consecutive Sequence.
+    * Memory Usage: 25.1 MB, less than 74.84% of C# online submissions for Longest Consecutive Sequence.
+    */
     public class Solution2 : ISolution
     {
         // a much shorter solution but the performance is similar
@@ -132,12 +136,9 @@ namespace LongestConsecutiveSequence
 
         int Find(int i)
         {
-            while (id[i] != i)
-            {
-                id[i] = id[id[i]];
-                i = id[i];
-            }
-            return i;
+            if (id[i] != i)
+                id[i] = Find(id[i]);
+            return id[i];
         }
 
         public int MaxSize()
