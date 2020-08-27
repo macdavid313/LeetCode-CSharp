@@ -3,8 +3,8 @@
  * Project: UnionFind
  * Created Date: Sunday, 23rd August 2020 6:40:31 pm
  * Author: David Gu (macdavid313@gmail.com)
- * Runtime: 116 ms, faster than 86.96% of C# online submissions for Friend Circles.
- * Memory Usage: 27.9 MB, less than 99.52% of C# online submissions for Friend Circles.
+ * Runtime: 120 ms, faster than 72.95% of C# online submissions for Friend Circles.
+ * Memory Usage: 28.1 MB, less than 96.14% of C# online submissions for Friend Circles.
  * Copyright (c) David Gu 2020
  */
 
@@ -74,12 +74,9 @@ namespace FriendCircles
 
         public int Find(int i)
         {
-            while (id[i] != i)
-            {
-                id[i] = id[id[i]];
-                i = id[i];
-            }
-            return i;
+            if (id[i] != i)
+                id[i] = Find(id[i]);
+            return id[i];
         }
 
         public bool Connected(int p, int q) => Find(p) == Find(q);
