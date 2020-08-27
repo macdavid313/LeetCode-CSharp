@@ -3,11 +3,13 @@
  * Project: UnionFind
  * Created Date: Sunday, 23rd August 2020 6:40:31 pm
  * Author: David Gu (macdavid313@gmail.com)
- * Runtime: 176 ms, faster than 19.15% of C# online submissions for Friend Circles.
- * Memory Usage: 27.9 MB, less than 100.00% of C# online submissions for Friend Circles.
+ * Runtime: 116 ms, faster than 86.96% of C# online submissions for Friend Circles.
+ * Memory Usage: 27.9 MB, less than 99.52% of C# online submissions for Friend Circles.
  * Copyright (c) David Gu 2020
  */
 
+
+using System;
 
 namespace FriendCircles
 {
@@ -17,7 +19,7 @@ namespace FriendCircles
         {
             int n = M.Length;
             if (n <= 1) return n;
-            var uf = new UF(n);
+            var uf = new SpanUF(stackalloc int[n], stackalloc int[n]);
             for (var i = 0; i < n; i++)
             {
                 for (var j = i + 1; j < n; j++)
@@ -28,22 +30,22 @@ namespace FriendCircles
                     }
                 }
             }
-            return uf.Count();
+            return uf.Count;
         }
     }
 
-    class UF
+    ref struct SpanUF
     {
-        readonly int[] id;
-        readonly int[] sz;
-        int count;
+        readonly Span<int> id;
+        readonly Span<int> sz;
+        public int Count { get; private set; }
 
-        public UF(int n)
+        public SpanUF(Span<int> id, Span<int> sz)
         {
-            id = new int[n];
-            sz = new int[n];
-            count = n;
-            for (var i = 0; i < n; i++)
+            this.id = id;
+            this.sz = sz;
+            Count = id.Length;
+            for (var i = 0; i < Count; i++)
             {
                 id[i] = i;
                 sz[i] = 1;
@@ -66,11 +68,11 @@ namespace FriendCircles
                     id[qRoot] = pRoot;
                     sz[pRoot] += sz[qRoot];
                 }
-                count -= 1;
+                Count -= 1;
             }
         }
 
-        int Find(int i)
+        public int Find(int i)
         {
             while (id[i] != i)
             {
@@ -80,6 +82,6 @@ namespace FriendCircles
             return i;
         }
 
-        public int Count() => count;
+        public bool Connected(int p, int q) => Find(p) == Find(q);
     }
 }
