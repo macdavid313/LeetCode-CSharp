@@ -2,7 +2,7 @@
 
 A set of problems dedicated to **Union Find**.
 
-Typically, when using the *Union Find* approach with path compression and weights (rank)  applied, it has *Time Complexity* of **O(log(n))** and *Space Complexity* of **O(n)**.
+Typically, when using the *Union Find* approach with path compression and weights (rank)  applied, it has *Time Complexity* of **O(log*(n))** and *Space Complexity* of **O(n)**.
 
 |  ID   |                                            Name                                             | Difficulty |
 | :---: | :-----------------------------------------------------------------------------------------: | :--------: |
