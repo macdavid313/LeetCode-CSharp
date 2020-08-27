@@ -2,12 +2,15 @@
 
 A set of problems dedicated to **Union Find**.
 
+Typically, when using the *Union Find* approach with path compression and weights (rank)  applied, it has *Time Complexity* of **O(log(n))** and *Space Complexity* of **O(n)**.
+
 |  ID   |                                            Name                                             | Difficulty |
 | :---: | :-----------------------------------------------------------------------------------------: | :--------: |
 |  128  | [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/) |    Hard    |
 |  399  |            [Evaluate Division](https://leetcode.com/problems/evaluate-division/)            |   Medium   |
 |  547  |               [Friend Circles](https://leetcode.com/problems/friend-circles/)               |   Medium   |
 |  684  |         [Redundant Connection](https://leetcode.com/problems/redundant-connection/)         |   Medium   |
+|  200  |            [Number of Islands](https://leetcode.com/problems/number-of-islands/)            |   Medium   |
 
 ## References
 
