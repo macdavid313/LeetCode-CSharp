@@ -5,6 +5,7 @@ A set of problems dedicated to **Dynamic Programming** approach.
 |  ID   |                                             Name                                              | Difficulty |  Time  | Space  |
 | :---: | :-------------------------------------------------------------------------------------------: | :--------: | :----: | :----: |
 |   5   | [Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/) |   Medium   | O(n^2) | O(n^2) |
+|  264  |                [Ugly Number II](https://leetcode.com/problems/ugly-number-ii/)                |   Medium   |  O(1)  |  O(1)  |
 
 ## References
 
