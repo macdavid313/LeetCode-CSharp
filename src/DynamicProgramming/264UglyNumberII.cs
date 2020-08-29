@@ -1,6 +1,6 @@
 /*
  * File: 264UglyNumberII.cs
- * Project: Math
+ * Project: DynamicProgramming
  * Created Date: Friday, 28th August 2020 9:28:37 pm
  * Author: David Gu (macdavid313@gmail.com)
  * Runtime: 40 ms, faster than 98.53% of C# online submissions for Ugly Number II.

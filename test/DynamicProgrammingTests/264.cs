@@ -1,6 +1,6 @@
 /*
  * File: 264.cs
- * Project: MathTests
+ * Project: DynamicProgrammingTests
  * Created Date: Friday, 28th August 2020 9:29:42 pm
  * Author: David Gu (macdavid313@gmail.com)
  * Copyright (c) David Gu 2020
