@@ -87,6 +87,49 @@ namespace MySort
             }
         }
 
+        public static T[] MyMergeSort(T[] lst)
+        {
+            if (lst is null) throw new ArgumentNullException(nameof(lst));
+            if (lst.Length <= 1) return lst;
+
+            var mid = lst.Length / 2;
+            var left = MyMergeSort(lst[0..mid]);
+            var right = MyMergeSort(lst[mid..lst.Length]);
+            return MyMergeSortMerge(left, right);
+        }
+
+        static T[] MyMergeSortMerge(T[] left, T[] right)
+        {
+            var aux = new T[left.Length + right.Length];
+            var mid = left.Length;
+            var pLeft = 0;
+            var pRight = 0;
+            for (var i = 0; i < aux.Length; i++)
+            {
+                if (pLeft == mid)
+                {
+                    aux[i] = right[pRight];
+                    pRight += 1;
+                }
+                else if (pRight == right.Length)
+                {
+                    aux[i] = left[pLeft];
+                    pLeft += 1;
+                }
+                else if (Less(left[pLeft], right[pRight]))
+                {
+                    aux[i] = left[pLeft];
+                    pLeft += 1;
+                }
+                else
+                {
+                    aux[i] = right[pRight];
+                    pRight += 1;
+                }
+            }
+            return aux;
+        }
+
         static bool Less(T a, T b) => a.CompareTo(b) == -1;
 
         static void Swap(T[] lst, int i, int j)
