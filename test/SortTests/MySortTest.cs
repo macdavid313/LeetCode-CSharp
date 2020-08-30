@@ -9,7 +9,6 @@
 
 using Xunit;
 using MySort;
-using System.Collections.Generic;
 
 namespace SortTests
 {

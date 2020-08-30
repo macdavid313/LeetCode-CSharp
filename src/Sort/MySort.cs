@@ -8,7 +8,6 @@
 
 
 using System;
-using System.Collections.Generic;
 
 namespace MySort
 {
@@ -17,15 +16,15 @@ namespace MySort
         /*  https://oeis.org/A033622 */
         readonly static int[] gapSequence = new int[] { 3905, 2161, 929, 505, 209, 109, 41, 19, 5, 1 };
 
-        public static void MySelectionSort(IList<T> lst)
+        public static void MySelectionSort(T[] lst)
         {
             if (lst is null) throw new ArgumentNullException(nameof(lst));
-            if (lst.Count <= 1) return;
+            if (lst.Length <= 1) return;
 
-            for (var i = 0; i < lst.Count; i++)
+            for (var i = 0; i < lst.Length; i++)
             {
                 var jMin = i;
-                for (var j = i + 1; j < lst.Count; j++)
+                for (var j = i + 1; j < lst.Length; j++)
                 {
                     if (Less(lst[j], lst[jMin]))
                         jMin = j;
@@ -35,12 +34,12 @@ namespace MySort
             }
         }
 
-        public static void MyInsertionSort(IList<T> lst)
+        public static void MyInsertionSort(T[] lst)
         {
             if (lst is null) throw new ArgumentNullException(nameof(lst));
-            if (lst.Count <= 1) return;
+            if (lst.Length <= 1) return;
 
-            for (var i = 1; i < lst.Count; i++)
+            for (var i = 1; i < lst.Length; i++)
             {
                 for (var j = i; j > 0 && Less(lst[j], lst[j - 1]); j--)
                 {
@@ -49,14 +48,14 @@ namespace MySort
             }
         }
 
-        public static void MyShellSort(IList<T> lst)
+        public static void MyShellSort(T[] lst)
         {
             if (lst is null) throw new ArgumentNullException(nameof(lst));
-            if (lst.Count <= 1) return;
+            if (lst.Length <= 1) return;
 
             foreach (var gap in gapSequence)
             {
-                for (var i = gap; i < lst.Count; i++)
+                for (var i = gap; i < lst.Length; i++)
                 {
                     for (var j = i; j >= gap && Less(lst[j], lst[j - gap]); j -= gap)
                     {
@@ -66,12 +65,12 @@ namespace MySort
             }
         }
 
-        public static void MyBubbleSort(IList<T> lst)
+        public static void MyBubbleSort(T[] lst)
         {
             if (lst is null) throw new ArgumentNullException(nameof(lst));
-            if (lst.Count <= 1) return;
+            if (lst.Length <= 1) return;
 
-            var n = lst.Count;
+            var n = lst.Length;
             while (true)
             {
                 var swapped = false;
@@ -90,7 +89,7 @@ namespace MySort
 
         static bool Less(T a, T b) => a.CompareTo(b) == -1;
 
-        static void Swap(IList<T> lst, int i, int j)
+        static void Swap(T[] lst, int i, int j)
         {
             T tmp = lst[i];
             lst[i] = lst[j];
