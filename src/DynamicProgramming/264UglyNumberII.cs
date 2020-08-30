@@ -60,8 +60,6 @@ namespace UglyNumberII
             return sequence[nth - 1];
         }
 
-        static int Min(int x, int y) => x < y ? x : y;
-
-        static int Min(int x, int y, int z) => x < y ? Min(x, z) : Min(y, z);
+        static int Min(int x, int y, int z) => x < y ? Math.Min(x, z) : Math.Min(y, z);
     }
 }
