@@ -164,7 +164,6 @@ namespace MySort
             }
         }
 
-
         static void MyShuffle(T[] lst)
         {
             for (var i = 0; i < lst.Length; i++)
