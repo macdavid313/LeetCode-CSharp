@@ -137,4 +137,84 @@ namespace MyQueue
             return item;
         }
     }
+
+    public class MyMaxPQ<T> where T : IComparable
+    {
+        readonly T[] pq;
+        int ptr;
+        public int Capacity { get; private set; }
+        public int Size { get => ptr; }
+
+        public MyMaxPQ(int capacity)
+        {
+            if (capacity < 0)
+            {
+                throw new ArgumentException("Capacity can't be negative.");
+            }
+            Capacity = capacity;
+            pq = new T[Capacity];
+            ptr = 0;
+        }
+
+        public bool IsEmpty() => Size == 0;
+
+        public void Insert(T item)
+        {
+            if (ptr == Capacity)
+            {
+                throw new InvalidOperationException("Can't insert when Capacity is full.");
+            }
+            pq[ptr] = item;
+            Swim(ptr);
+            ptr += 1;
+        }
+
+        public T DelMax()
+        {
+            if (ptr == 0)
+            {
+                throw new InvalidOperationException("Can't delete Max from an empty Priority Queue");
+            }
+            T max = pq[0];
+            Swap(0, ptr - 1);
+            ptr -= 1;
+            pq[ptr] = default;
+            Sink(0);
+            return max;
+        }
+
+        void Swim(int k)
+        {
+            while (k > 0)
+            {
+                var parentIdx = ParentIdx(k);
+                if (!Less(parentIdx, k)) break;
+                Swap(parentIdx, k);
+                k = parentIdx;
+            }
+        }
+
+        void Sink(int k)
+        {
+            while (k * 2 + 1 < ptr)
+            {
+                var childIdx = 2 * k + 1;
+                if (childIdx < Size && Less(childIdx, childIdx + 1)) childIdx += 1;
+                if (!Less(k, childIdx)) break;
+                Swap(k, childIdx);
+                k = childIdx;
+            }
+        }
+
+        int ParentIdx(int k) => k % 2 == 1 ? k / 2 : k / 2 - 1;
+
+        bool Less(int i, int j) => pq[i].CompareTo(pq[j]) == -1;
+
+        void Swap(int i, int j)
+        {
+            T tmp = pq[i];
+            pq[i] = pq[j];
+            pq[j] = tmp;
+        }
+    }
 }

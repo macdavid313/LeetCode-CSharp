@@ -7,6 +7,7 @@
  */
 
 
+using System;
 using Xunit;
 using MyQueue;
 
@@ -69,6 +70,26 @@ namespace QueueTests
             Assert.Equal(2, queue.Size);
             Assert.Equal("that", queue.Dequeue());
             Assert.Equal("is", queue.Dequeue());
+        }
+
+        [Fact]
+        public void TestMaxPriorityQueue()
+        {
+            var pq = new MyMaxPQ<int>(10);
+            Assert.Equal(10, pq.Capacity);
+            Assert.Equal(0, pq.Size);
+            for (var i = 0; i < 10; i++)
+            {
+                pq.Insert(i);
+                Assert.Equal(i + 1, pq.Size);
+            }
+            Assert.Throws<InvalidOperationException>(() => pq.Insert(10));
+            for (var i = 9; i >= 0; i--)
+            {
+                Assert.Equal(i, pq.DelMax());
+                Assert.Equal(i, pq.Size);
+            }
+            Assert.Throws<InvalidOperationException>(() => pq.DelMax());
         }
     }
 }
