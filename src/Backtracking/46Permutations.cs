@@ -55,6 +55,48 @@ namespace Permutations
             }
         }
 
+        /* Heap's algorithm, https://en.wikipedia.org/wiki/Heap%27s_algorithm
+        * Runtime: 240 ms, faster than 92.63% of C# online submissions for Permutations.
+        * Memory Usage: 31 MB, less than 99.11% of C# online submissions for Permutations.
+        public IList<IList<int>> Permute(int[] nums)
+        {
+            int totalLen = Factorial(nums.Length);
+            var permutations = new List<IList<int>>(totalLen);
+            Span<int> numsCopy = stackalloc int[nums.Length];
+            nums.CopyTo(numsCopy);
+            Permute(nums, nums.Length, permutations);
+            return permutations;
+        }
+
+        void Permute(Span<int> nums, int k, List<IList<int>> permutations)
+        {
+            if (k == 1)
+            {
+                permutations.Add(nums.ToArray());
+                return;
+            }
+            Permute(nums, k - 1, permutations);
+            for (var i = 0; i < k - 1; i++)
+            {
+                if (k % 2 == 0)
+                {
+                    Swap(nums, i, k - 1);
+                }
+                else
+                {
+                    Swap(nums, 0, k - 1);
+                }
+                Permute(nums, k - 1, permutations);
+            }
+        }
+
+        void Swap(Span<int> nums, int i, int j)
+        {
+            int tmp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = tmp;
+        } */
+
         int Factorial(int n)
         {
             if (n < 0)

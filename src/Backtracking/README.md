@@ -12,3 +12,4 @@ A set of problems tagged as **Backtracking**.
 * LeetCode, [https://leetcode.com/tag/backtracking/](https://leetcode.com/tag/backtracking/)
 * Wikipedia page, [https://en.wikipedia.org/wiki/Backtracking](https://en.wikipedia.org/wiki/Backtracking)
 * Eight queens puzzle, [https://en.wikipedia.org/wiki/Eight_queens_puzzle](https://en.wikipedia.org/wiki/Eight_queens_puzzle)
+* Heap's algorithm, [https://en.wikipedia.org/wiki/Heap%27s_algorithm](https://en.wikipedia.org/wiki/Heap%27s_algorithm)
