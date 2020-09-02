@@ -145,7 +145,7 @@ namespace MySort
             if (lo < hi)
             {
                 var p = MyQuickSortPartition(lst, lo, hi);
-                MyQuickSort(lst, 0, p);
+                MyQuickSort(lst, lo, p);
                 MyQuickSort(lst, p + 1, hi);
             }
         }
