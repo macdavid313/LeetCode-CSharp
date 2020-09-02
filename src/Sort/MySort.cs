@@ -164,6 +164,36 @@ namespace MySort
             }
         }
 
+        public static void MyHeapSort(T[] lst)
+        {
+            if (lst is null) throw new ArgumentNullException(nameof(lst));
+            if (lst.Length <= 1) return;
+
+            for (var k = lst.Length / 2 - 1; k > 0; k--)
+            {
+                Heapify(lst, lst.Length, k);
+            }
+
+            for (var i = lst.Length - 1; i > 0; i--)
+            {
+                Swap(lst, 0, i);
+                Heapify(lst, i, 0);
+            }
+        }
+
+        static void Heapify(T[] lst, int len, int k)
+        {
+            while (2 * k + 1 < len)
+            {
+                var j = 2 * k + 1;
+                // choose the bigger child
+                if (j + 1 < len && Less(lst[j], lst[j + 1])) j += 1;
+                if (!Less(lst[k], lst[j])) return;
+                Swap(lst, k, j);
+                k = j;
+            }
+        }
+
         static void MyShuffle(T[] lst)
         {
             for (var i = 0; i < lst.Length; i++)
