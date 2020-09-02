@@ -169,7 +169,7 @@ namespace MySort
             if (lst is null) throw new ArgumentNullException(nameof(lst));
             if (lst.Length <= 1) return;
 
-            for (var k = lst.Length / 2 - 1; k > 0; k--)
+            for (var k = lst.Length / 2 - 1; k >= 0; k--)
             {
                 Heapify(lst, lst.Length, k);
             }
