@@ -164,6 +164,50 @@ namespace MySort
             }
         }
 
+        public static void MyQuick3WaySort(T[] lst)
+        {
+            if (lst is null) throw new ArgumentNullException(nameof(lst));
+            if (lst.Length <= 1) return;
+            MyShuffle(lst);
+            MyQuick3WaySort(lst, 0, lst.Length - 1);
+        }
+
+        static void MyQuick3WaySort(T[] lst, int lo, int hi)
+        {
+            if (lo < hi)
+            {
+                MyQuick3WaySortPartition(lst, lo, hi, out int left, out int right);
+                MyQuick3WaySort(lst, lo, left - 1);
+                MyQuick3WaySort(lst, right + 1, hi);
+            }
+        }
+
+        static void MyQuick3WaySortPartition(T[] lst, int lo, int hi, out int left, out int right)
+        {
+            var pivot = lst[(lo + hi) / 2];
+            var i = lo;
+            left = lo;
+            right = hi;
+            while (i <= right)
+            {
+                switch (lst[i].CompareTo(pivot))
+                {
+                    case -1:
+                        Swap(lst, i, left);
+                        i += 1;
+                        left += 1;
+                        continue;
+                    case 1:
+                        Swap(lst, i, right);
+                        right -= 1;
+                        continue;
+                    default:
+                        i += 1;
+                        continue;
+                }
+            }
+        }
+
         public static void MyHeapSort(T[] lst)
         {
             if (lst is null) throw new ArgumentNullException(nameof(lst));

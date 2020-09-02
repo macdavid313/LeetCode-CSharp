@@ -152,6 +152,32 @@ namespace SortTests
         }
 
         [Fact]
+        public void Quick3WaySortTestCase1()
+        {
+            var actual = new int[] { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+            var expected = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            MySort<int>.MyQuickSort(actual);
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Quick3WaySortTestCase2()
+        {
+            var actual = new int[] { 10, 10, 9, 9, 8, 8, 7, 7 };
+            var expected = new int[] { 7, 7, 8, 8, 9, 9, 10, 10 };
+            MySort<int>.MyQuick3WaySort(actual);
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void MyQuick3WaySortRandomTest()
+        {
+            GetSampleArrayData(out int[] arr, out int[] expected);
+            MySort<int>.MyQuick3WaySort(arr);
+            Assert.Equal(expected, arr);
+        }
+
+        [Fact]
         public void HeapSortTestCase1()
         {
             var actual = new int[] { 0, 1, 2, 3, 4, 5, 6, 7 };
