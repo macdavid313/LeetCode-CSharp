@@ -1,6 +1,6 @@
 # Queue
 
-A set of problems dedicated to **Queue**.
+A set of [problems](https://leetcode.com/tag/queue/) dedicated to **Queue**.
 
 |  ID   |                                      Name                                       | Difficulty |
 | :---: | :-----------------------------------------------------------------------------: | :--------: |
@@ -8,5 +8,4 @@ A set of problems dedicated to **Queue**.
 
 ## References
 
-* LeetCode, [https://leetcode.com/tag/queue/](https://leetcode.com/tag/queue/)
-* Wikipedia page, [https://en.wikipedia.org/wiki/Queue_(abstract_data_type)](https://en.wikipedia.org/wiki/Queue_(abstract_data_type))
+* Wikipedia, [Queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type))

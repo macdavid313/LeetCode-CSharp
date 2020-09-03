@@ -1,6 +1,6 @@
 # Graph
 
-Problems dedicated to **Graph**.
+[Problems](https://leetcode.com/tag/graph/) dedicated to **Graph**.
 
 |  ID   |                              Name                               | Difficulty |
 | :---: | :-------------------------------------------------------------: | :--------: |
@@ -8,5 +8,4 @@ Problems dedicated to **Graph**.
 
 ## References
 
-* LeetCode, [https://leetcode.com/tag/graph/](https://leetcode.com/tag/graph/)
 * Wikipedia, [Category: Graph algotithms](https://en.wikipedia.org/wiki/Category:Graph_algorithms)

@@ -1,6 +1,6 @@
 # Stack
 
-A set of problems dedicated to **Stack**.
+A set of [problems](https://leetcode.com/tag/stack/) dedicated to **Stack**.
 
 |  ID   |                                   Name                                    | Difficulty |
 | :---: | :-----------------------------------------------------------------------: | :--------: |
@@ -11,5 +11,4 @@ A set of problems dedicated to **Stack**.
 
 ## References
 
-* LeetCode, [https://leetcode.com/tag/stack/](https://leetcode.com/tag/stack/)
-* Wikipedia page, [https://en.wikipedia.org/wiki/Stack_(abstract_data_type)](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))
+* Wikipedia, [Stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))

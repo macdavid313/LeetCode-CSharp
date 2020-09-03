@@ -1,15 +1,14 @@
 # Sort
 
-A few problems tagged as **Sort**.
+A few [problems](https://leetcode.com/tag/sort/) tagged as **Sort**.
 
 ## References
 
-* LeetCode, [https://leetcode.com/tag/sort/](https://leetcode.com/tag/sort/)
-* Wikipedia, Sorting Algorithms, [https://en.wikipedia.org/wiki/Sorting_algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm)
-* Selection Sort, [https://en.wikipedia.org/wiki/Selection_sort](https://en.wikipedia.org/wiki/Selection_sort)
-* Insertion Sort, [https://en.wikipedia.org/wiki/Insertion_sort](https://en.wikipedia.org/wiki/Insertion_sort)
-* Bubble sort, [https://en.wikipedia.org/wiki/Bubble_sort](https://en.wikipedia.org/wiki/Bubble_sort)
-* Shellsort, [https://en.wikipedia.org/wiki/Shellsort](https://en.wikipedia.org/wiki/Shellsort)
-* Merge Sort, [https://en.wikipedia.org/wiki/Merge_sort](https://en.wikipedia.org/wiki/Merge_sort)
-* Quicksort, [https://en.wikipedia.org/wiki/Quicksort](https://en.wikipedia.org/wiki/Quicksort)
-* Heapsort, [https://en.wikipedia.org/wiki/Heapsort](https://en.wikipedia.org/wiki/Heapsort)
+* Wikipedia, [Sorting Algorithms](https://en.wikipedia.org/wiki/Sorting_algorithm)
+* Wikipedia, [Selection Sort](https://en.wikipedia.org/wiki/Selection_sort)
+* Wikipedia, [Insertion Sort](https://en.wikipedia.org/wiki/Insertion_sort)
+* Wikipedia, [Bubble sortrt](https://en.wikipedia.org/wiki/Bubble_sort)
+* Wikipedia, [Shellsort](https://en.wikipedia.org/wiki/Shellsort)
+* Wikipedia, [Merge Sort](https://en.wikipedia.org/wiki/Merge_sort)
+* Wikipedia, [Quicksort](https://en.wikipedia.org/wiki/Quicksort)
+* Wikipedia, [Heapsort](https://en.wikipedia.org/wiki/Heapsort)

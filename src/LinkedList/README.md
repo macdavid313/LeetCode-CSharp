@@ -1,6 +1,6 @@
 # Linked List
 
-A set of problems dedicated to **Linked List**.
+A set of [problems](https://leetcode.com/tag/linked-list/) dedicated to **Linked List**.
 
 |  ID   |                                                Name                                                 | Difficulty |
 | :---: | :-------------------------------------------------------------------------------------------------: | :--------: |
@@ -11,5 +11,4 @@ A set of problems dedicated to **Linked List**.
 
 ## References
 
-* LeetCode, [https://leetcode.com/tag/linked-list/](https://leetcode.com/tag/linked-list/)
-* Wikipedia page, [https://en.wikipedia.org/wiki/Linked_list](https://en.wikipedia.org/wiki/Linked_list)
+* Wikipedia, [Linked List](https://en.wikipedia.org/wiki/Linked_list)

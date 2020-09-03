@@ -1,6 +1,6 @@
 # Dynamic Programming
 
-A set of problems dedicated to **Dynamic Programming** approach.
+A set of [problems](https://leetcode.com/tag/dynamic-programming/) dedicated to **Dynamic Programming** approach.
 
 |  ID   |                                             Name                                              | Difficulty |
 | :---: | :-------------------------------------------------------------------------------------------: | :--------: |
@@ -11,5 +11,4 @@ A set of problems dedicated to **Dynamic Programming** approach.
 
 ## References
 
-* LeetCode, [https://leetcode.com/tag/dynamic-programming/](https://leetcode.com/tag/dynamic-programming/)
-* Wikipedia page, [https://en.wikipedia.org/wiki/Dynamic_programming](https://en.wikipedia.org/wiki/Dynamic_programming)
+* Wikipedia [Dynamic Programming](https://en.wikipedia.org/wiki/Dynamic_programming)

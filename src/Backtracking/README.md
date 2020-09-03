@@ -1,6 +1,6 @@
 # Backtracking
 
-A set of problems tagged as **Backtracking**.
+A set of [problems](https://leetcode.com/tag/backtracking/) tagged as **Backtracking**.
 
 |  ID   |                                                     Name                                                      | Difficulty |
 | :---: | :-----------------------------------------------------------------------------------------------------------: | :--------: |
@@ -10,7 +10,6 @@ A set of problems tagged as **Backtracking**.
 
 ## References
 
-* LeetCode, [https://leetcode.com/tag/backtracking/](https://leetcode.com/tag/backtracking/)
-* Wikipedia page, [https://en.wikipedia.org/wiki/Backtracking](https://en.wikipedia.org/wiki/Backtracking)
-* Eight queens puzzle, [https://en.wikipedia.org/wiki/Eight_queens_puzzle](https://en.wikipedia.org/wiki/Eight_queens_puzzle)
-* Heap's algorithm, [https://en.wikipedia.org/wiki/Heap%27s_algorithm](https://en.wikipedia.org/wiki/Heap%27s_algorithm)
+* Wikipedia, [Backtracking](https://en.wikipedia.org/wiki/Backtracking)
+* Wikipedia, [Eight queens puzzle](https://en.wikipedia.org/wiki/Eight_queens_puzzle)
+* Wikipedia, [Heap's algorithm](https://en.wikipedia.org/wiki/Heap%27s_algorithm)

@@ -1,6 +1,6 @@
 # Union Find
 
-A set of problems dedicated to **Union Find**.
+A set of [problems](https://leetcode.com/tag/union-find/) dedicated to **Union Find**.
 
 Typically, when using the *Union Find* approach with path compression and weights (rank)  applied, it has *Time Complexity* of **O(log\*(n))** and *Space Complexity* of **O(n)**.
 
@@ -14,6 +14,5 @@ Typically, when using the *Union Find* approach with path compression and weight
 
 ## References
 
-* LeetCode, [https://leetcode.com/tag/union-find/](https://leetcode.com/tag/union-find/)
-* Wikipedia page, [https://en.wikipedia.org/wiki/Disjoint-set_data_structure](https://en.wikipedia.org/wiki/Disjoint-set_data_structure)
-* Princeton Algorithms Course, [https://algs4.cs.princeton.edu/15uf/](https://algs4.cs.princeton.edu/15uf/)
+* Wikipedia, [Disjoint-set Data Structure](https://en.wikipedia.org/wiki/Disjoint-set_data_structure)
+* [Princeton Algorithms Course](https://algs4.cs.princeton.edu/15uf/)

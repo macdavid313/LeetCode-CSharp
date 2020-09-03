@@ -1,6 +1,6 @@
 # Math
 
-A set of problems tagged as **Math**.
+A set of [problems](https://leetcode.com/tag/math/) tagged as **Math**.
 
 |  ID   |                                Name                                 | Difficulty |
 | :---: | :-----------------------------------------------------------------: | :--------: |
