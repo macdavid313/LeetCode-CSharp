@@ -2,9 +2,9 @@
 
 Problems dedicated to **Graph**.
 
-|  ID   |                              Name                               | Difficulty |   Time   | Space |
-| :---: | :-------------------------------------------------------------: | :--------: | :------: | :---: |
-|  841  | [Keys and Rooms](https://leetcode.com/problems/keys-and-rooms/) |   Medium   | O(n + m) | O(n)  |
+|  ID   |                              Name                               | Difficulty |
+| :---: | :-------------------------------------------------------------: | :--------: |
+|  841  | [Keys and Rooms](https://leetcode.com/problems/keys-and-rooms/) |   Medium   |
 
 ## References
 

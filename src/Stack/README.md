@@ -2,12 +2,12 @@
 
 A set of problems dedicated to **Stack**.
 
-|  ID   |                                   Name                                    | Difficulty | Time  | Space |
-| :---: | :-----------------------------------------------------------------------: | :--------: | :---: | :---: |
-|  224  |    [Basic Calculator](https://leetcode.com/problems/basic-calculator/)    |    Hard    | O(n)  | O(n)  |
-|  71   |       [SimplifyPath](https://leetcode.com/problems/simplify-path/)        |   Medium   | O(n)  | O(n)  |
-|  42   | [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/) |    Hard    | O(n)  | O(1)  |
-|  20   |   [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)   |    Easy    | O(n)  | O(1)  |
+|  ID   |                                   Name                                    | Difficulty |
+| :---: | :-----------------------------------------------------------------------: | :--------: |
+|  224  |    [Basic Calculator](https://leetcode.com/problems/basic-calculator/)    |    Hard    |
+|  71   |       [SimplifyPath](https://leetcode.com/problems/simplify-path/)        |   Medium   |
+|  42   | [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/) |    Hard    |
+|  20   |   [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)   |    Easy    |
 
 ## References
 

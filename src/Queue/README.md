@@ -2,9 +2,9 @@
 
 A set of problems dedicated to **Queue**.
 
-|  ID   |                                      Name                                       | Difficulty | Time  | Space |
-| :---: | :-----------------------------------------------------------------------------: | :--------: | :---: | :---: |
-|  933  | [Number of Recent Calls](https://leetcode.com/problems/number-of-recent-calls/) |    Easy    | O(n)  | O(1)  |
+|  ID   |                                      Name                                       | Difficulty |
+| :---: | :-----------------------------------------------------------------------------: | :--------: |
+|  933  | [Number of Recent Calls](https://leetcode.com/problems/number-of-recent-calls/) |    Easy    |
 
 ## References
 

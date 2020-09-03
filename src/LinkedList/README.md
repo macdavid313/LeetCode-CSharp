@@ -2,12 +2,12 @@
 
 A set of problems dedicated to **Linked List**.
 
-|  ID   |                                                Name                                                 | Difficulty |  Time  | Space |
-| :---: | :-------------------------------------------------------------------------------------------------: | :--------: | :----: | :---: |
-|  21   |           [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)           |    Easy    | O(m*n) | O(n)  |
-|   2   |                  [Add Two Numbers](https://leetcode.com/problems/add-two-numbers/)                  |   Medium   |  O(n)  | O(1)  |
-|  206  |              [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/)              |    Easy    |  O(n)  | O(1)  |
-|  19   | [Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/) |   Medium   |  O(n)  | O(1)  |
+|  ID   |                                                Name                                                 | Difficulty |
+| :---: | :-------------------------------------------------------------------------------------------------: | :--------: |
+|  21   |           [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)           |    Easy    |
+|   2   |                  [Add Two Numbers](https://leetcode.com/problems/add-two-numbers/)                  |   Medium   |
+|  206  |              [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/)              |    Easy    |
+|  19   | [Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/) |   Medium   |
 
 ## References
 
