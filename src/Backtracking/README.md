@@ -6,6 +6,7 @@ A set of problems tagged as **Backtracking**.
 | :---: | :-----------------------------------------------------------------------------------------------------------: | :--------: | :-------: | :---: |
 |  17   | [Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/) |   Medium   |  O(2^n)   | O(n)  |
 |  46   |                          [Permutations](https://leetcode.com/problems/permutations/)                          |   Medium   | O(n * n!) | O(n)  |
+|  51   |                              [N-Queens](https://leetcode.com/problems/n-queens/)                              |   Medium   |   O(n!)   | O(n)  |
 
 ## References
 
