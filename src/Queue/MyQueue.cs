@@ -199,7 +199,7 @@ namespace MyQueue
             while (k * 2 + 1 < ptr)
             {
                 var childIdx = 2 * k + 1;
-                if (childIdx < Size && Less(childIdx, childIdx + 1)) childIdx += 1;
+                if (childIdx + 1 < Size && Less(childIdx, childIdx + 1)) childIdx += 1;
                 if (!Less(k, childIdx)) break;
                 Swap(k, childIdx);
                 k = childIdx;

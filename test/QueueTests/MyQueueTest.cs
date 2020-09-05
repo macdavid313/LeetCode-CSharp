@@ -15,6 +15,8 @@ namespace QueueTests
 {
     public class MyQueueTest
     {
+        readonly Random random = new Random();
+
         [Fact]
         public void TestEmptyQueue()
         {
@@ -90,6 +92,25 @@ namespace QueueTests
                 Assert.Equal(i, pq.Size);
             }
             Assert.Throws<InvalidOperationException>(() => pq.DelMax());
+        }
+
+        [Fact]
+        public void TestMaxPriorityQueueRandom()
+        {
+            var arr = new int[10000];
+            var pq = new MyMaxPQ<int>(arr.Length);
+            for (var i = 0; i < arr.Length; i++)
+            {
+                var x = random.Next(arr.Length);
+                arr[i] = x;
+                pq.Insert(x);
+            }
+            Array.Sort(arr);
+            Array.Reverse(arr);
+            for (var i = 0; i < arr.Length; i++)
+            {
+                Assert.Equal(arr[i], pq.DelMax());
+            }
         }
     }
 }
