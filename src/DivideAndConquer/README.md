@@ -1,6 +1,6 @@
 # Divide and Conquer
 
-Problems that can be effectively solved by thinking in a Divide and Conquer manner.
+[Problems](https://leetcode.com/tag/divide-and-conquer/) that can be effectively solved by thinking in a Divide and Conquer manner.
 
 |  ID   |                                    Name                                     | Difficulty |
 | :---: | :-------------------------------------------------------------------------: | :--------: |
