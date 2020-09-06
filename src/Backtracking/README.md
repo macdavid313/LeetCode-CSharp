@@ -6,7 +6,8 @@ A set of [problems](https://leetcode.com/tag/backtracking/) tagged as **Backtrac
 | :---: | :-----------------------------------------------------------------------------------------------------------: | :--------: |
 |  17   | [Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/) |   Medium   |
 |  46   |                          [Permutations](https://leetcode.com/problems/permutations/)                          |   Medium   |
-|  51   |                              [N-Queens](https://leetcode.com/problems/n-queens/)                              |   Medium   |
+|  51   |                              [N-Queens](https://leetcode.com/problems/n-queens/)                              |    Hard    |
+|  52   |                           [N-Queens II](https://leetcode.com/problems/n-queens-ii/)                           |    Hard    |
 
 ## References
 
