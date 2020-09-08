@@ -163,4 +163,32 @@ namespace TreeTests
             Assert.Equal(expected, actual.ToArray());
         }
     }
+
+    public class LeftLeaningRedBlackTreeTest
+    {
+        LeftLeaningRedBlackTree<char, char> GetLeftLeaningRedBlackTree()
+        {
+            var tree = new LeftLeaningRedBlackTree<char, char>();
+            var elems = "MJRELPXCHSA";
+            foreach (var c in elems)
+            {
+                tree.Put(c, c);
+            }
+            return tree;
+        }
+
+        [Fact]
+        public void TestGet()
+        {
+            var tree = GetLeftLeaningRedBlackTree();
+            Assert.Equal(11, tree.Size());
+            var elems = "MJRELPXCHSA";
+            foreach (var c in elems)
+            {
+                Assert.Equal(c, tree.Get(c));
+            }
+            Assert.Throws<KeyNotFoundException>(() => tree.Get('Z'));
+        }
+    }
+
 }
