@@ -8,6 +8,7 @@ A set of [problems](https://leetcode.com/tag/backtracking/) tagged as **Backtrac
 |  46   |                          [Permutations](https://leetcode.com/problems/permutations/)                          |   Medium   |
 |  51   |                              [N-Queens](https://leetcode.com/problems/n-queens/)                              |    Hard    |
 |  52   |                           [N-Queens II](https://leetcode.com/problems/n-queens-ii/)                           |    Hard    |
+|  77   |                          [Combinations](https://leetcode.com/problems/combinations/)                          |   Medium   |
 
 ## References
 
