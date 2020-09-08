@@ -11,4 +11,7 @@
 
 * Wikipedia, [Tree](https://en.wikipedia.org/wiki/Tree_(data_structure))
 * Wikipedia, [Binary Search Tree](https://en.wikipedia.org/wiki/Binary_search_tree)
+* Wikipedia, [AVL tree](https://en.wikipedia.org/wiki/AVL_tree)
+* Wikipedia, [Red-black tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree)
+* Wikipedia, [Left-learning red-black tree](https://en.wikipedia.org/wiki/Left-leaning_red%E2%80%93black_tree)
 * Wikipedia, [B-Tree](https://en.wikipedia.org/wiki/B-tree)
