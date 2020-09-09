@@ -10,6 +10,7 @@ A set of [problems](https://leetcode.com/tag/backtracking/) tagged as **Backtrac
 |  52   |                           [N-Queens II](https://leetcode.com/problems/n-queens-ii/)                           |    Hard    |
 |  77   |                          [Combinations](https://leetcode.com/problems/combinations/)                          |   Medium   |
 |  39   |                       [Combination Sum](https://leetcode.com/problems/combination-sum/)                       |   Medium   |
+|  40   |                    [Combination Sum II](https://leetcode.com/problems/combination-sum-ii/)                    |   Medium   |
 
 ## References
 
