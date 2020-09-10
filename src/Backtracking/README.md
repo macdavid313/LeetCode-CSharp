@@ -11,6 +11,7 @@ A set of [problems](https://leetcode.com/tag/backtracking/) tagged as **Backtrac
 |  77   |                          [Combinations](https://leetcode.com/problems/combinations/)                          |   Medium   |
 |  39   |                       [Combination Sum](https://leetcode.com/problems/combination-sum/)                       |   Medium   |
 |  40   |                    [Combination Sum II](https://leetcode.com/problems/combination-sum-ii/)                    |   Medium   |
+|  216  |                   [Combination Sum III](https://leetcode.com/problems/combination-sum-iii/)                   |   Medium   |
 
 ## References
 
