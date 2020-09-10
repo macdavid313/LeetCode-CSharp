@@ -1,6 +1,6 @@
 # Binary Search
 
-**Binary Search** problems on LeetCode.
+**Binary Search** [problems](https://leetcode.com/tag/binary-search/) on LeetCode.
 
 |  ID   |                                                                       Name                                                                        | Difficulty |
 | :---: | :-----------------------------------------------------------------------------------------------------------------------------------------------: | :--------: |
