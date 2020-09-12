@@ -6,6 +6,7 @@
 | :---: | :---------------------------------------------------------------------------------------------------------: | :--------: |
 |  257  |                    [Binary Tree Paths](https://leetcode.com/problems/binary-tree-paths/)                    |    Easy    |
 |  107  | [Binary Tree Level Order Traversal II](https://leetcode.com/problems/binary-tree-level-order-traversal-ii/) |    Easy    |
+|  637  |     [Average of Levels in Binary Tree](https://leetcode.com/problems/average-of-levels-in-binary-tree/)     |    Easy    |
 
 ## References
 
