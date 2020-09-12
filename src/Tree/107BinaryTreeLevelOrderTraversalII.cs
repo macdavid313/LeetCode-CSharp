@@ -3,8 +3,8 @@
  * Project: Tree
  * Created Date: Sunday, 6th September 2020 9:32:18 am
  * Author: David Gu (macdavid313@gmail.com)
- * Runtime: 244 ms, faster than 88.69% of C# online submissions for Binary Tree Level Order Traversal II.
- * Memory Usage: 30.7 MB, less than 82.26% of C# online submissions for Binary Tree Level Order Traversal II.
+ * Runtime: 248 ms, faster than 71.43% of C# online submissions for Binary Tree Level Order Traversal II.
+ * Memory Usage: 30.7 MB, less than 82.07% of C# online submissions for Binary Tree Level Order Traversal II.
  * Copyright (c) David Gu 2020
  */
 
@@ -20,20 +20,19 @@ namespace BinaryTreeLevelOrderTraversalII
         {
             if (root is null) return new int[0][];
             var levels = new Stack<int[]>();
-            var level = new List<TreeNode>
-            {
-                root
-            };
+            var level = new Queue<TreeNode>();
+            level.Enqueue(root);
             while (level.Count != 0)
             {
                 levels.Push(level.Select(node => node.val).ToArray());
-                var nextLevel = new List<TreeNode>();
-                foreach (var node in level)
+                var n = level.Count;
+                while (n != 0)
                 {
-                    if (node.left is object) nextLevel.Add(node.left);
-                    if (node.right is object) nextLevel.Add(node.right);
+                    var node = level.Dequeue();
+                    if (node.left is object) level.Enqueue(node.left);
+                    if (node.right is object) level.Enqueue(node.right);
+                    n -= 1;
                 }
-                level = nextLevel;
             }
             return levels.ToArray();
         }
