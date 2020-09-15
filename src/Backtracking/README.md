@@ -19,3 +19,4 @@ A set of [problems](https://leetcode.com/tag/backtracking/) tagged as **Backtrac
 * Wikipedia, [Backtracking](https://en.wikipedia.org/wiki/Backtracking)
 * Wikipedia, [Eight queens puzzle](https://en.wikipedia.org/wiki/Eight_queens_puzzle)
 * Wikipedia, [Heap's algorithm](https://en.wikipedia.org/wiki/Heap%27s_algorithm)
+* Wikipedia, [Sudoku](https://en.wikipedia.org/wiki/Sudoku)
