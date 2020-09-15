@@ -8,6 +8,7 @@
 |  107  | [Binary Tree Level Order Traversal II](https://leetcode.com/problems/binary-tree-level-order-traversal-ii/) |    Easy    |
 |  637  |     [Average of Levels in Binary Tree](https://leetcode.com/problems/average-of-levels-in-binary-tree/)     |    Easy    |
 |  94   |        [Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/)        |   Medium   |
+|  226  |                   [Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/)                   |    Easy    |
 
 ## References
 
