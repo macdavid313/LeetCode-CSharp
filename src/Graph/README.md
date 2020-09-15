@@ -9,3 +9,4 @@
 ## References
 
 * Wikipedia, [Category: Graph algotithms](https://en.wikipedia.org/wiki/Category:Graph_algorithms)
+* Wikipedia, [Topological sorting](https://en.wikipedia.org/wiki/Topological_sorting)
