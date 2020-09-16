@@ -128,4 +128,22 @@ namespace GraphTests
             Assert.True(cycleDetect.HasCycle);
         }
     }
+
+    public class DirectedCycleDetectTest
+    {
+        [Fact]
+        public void TestCase1()
+        {
+            var g = new DirectedGraph(6);
+            g.AddEdge(0, 5);
+            g.AddEdge(3, 5);
+            g.AddEdge(5, 4);
+            g.AddEdge(4, 3);
+            var cycleDetect = new DirectedCycleDetect(g);
+            var expectedCycle = new int[] { 3, 5, 4, 3 };
+            var actualCycle = cycleDetect.Cycle.ToArray();
+            Assert.True(cycleDetect.HasCycle);
+            Assert.Equal(expectedCycle, actualCycle);
+        }
+    }
 }

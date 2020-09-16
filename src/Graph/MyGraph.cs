@@ -64,18 +64,42 @@ namespace MyGraph
 
     public class DirectedGraph : IGraph
     {
-        public int V => throw new NotImplementedException();
+        readonly HashSet<int>[] adj;
 
-        public int E => throw new NotImplementedException();
+        public int V { get; private set; }
+
+        public int E { get; private set; }
+
+        public DirectedGraph(int v)
+        {
+            V = v;
+            E = 0;
+            adj = new HashSet<int>[V];
+            foreach (var i in Enumerable.Range(0, V))
+            {
+                adj[i] = new HashSet<int>();
+            }
+        }
 
         public void AddEdge(int v, int w)
         {
-            throw new NotImplementedException();
+            adj[v].Add(w);
+            E += 1;
         }
 
-        public IEnumerable<int> Adj(int v)
+        public IEnumerable<int> Adj(int v) => adj[v];
+
+        public DirectedGraph Reverse()
         {
-            throw new NotImplementedException();
+            var rg = new DirectedGraph(V);
+            foreach (var v in Enumerable.Range(0, V))
+            {
+                foreach (var w in adj[v])
+                {
+                    rg.AddEdge(w, v);
+                }
+            }
+            return rg;
         }
     }
 
@@ -248,4 +272,58 @@ namespace MyGraph
             return false;
         }
     }
+
+    public class DirectedCycleDetect
+    {
+        readonly bool[] marked;
+        readonly bool[] onStack;
+        readonly int[] edgeTo;
+
+        Stack<int> cycle;
+
+        public bool HasCycle { get => cycle is object; }
+
+        public IEnumerable<int> Cycle { get => cycle; }
+
+        public DirectedCycleDetect(DirectedGraph g)
+        {
+            marked = new bool[g.V];
+            onStack = new bool[g.V];
+            edgeTo = new int[g.V];
+            cycle = null;
+            foreach (var v in Enumerable.Range(0, g.V).Where(v => !marked[v]))
+            {
+                DFS(g, v);
+            }
+        }
+
+        void DFS(DirectedGraph g, int v)
+        {
+            marked[v] = true;
+            onStack[v] = true;
+            foreach (var w in g.Adj(v))
+            {
+                if (HasCycle) return;
+                else if (!marked[w])
+                {
+                    edgeTo[w] = v;
+                    DFS(g, w);
+                }
+                else if (onStack[w])
+                {
+                    cycle = new Stack<int>();
+                    var x = v;
+                    while (x != w)
+                    {
+                        cycle.Push(x);
+                        x = edgeTo[x];
+                    }
+                    cycle.Push(w);
+                    cycle.Push(v);
+                }
+            }
+            onStack[v] = false;
+        }
+    }
+
 }
