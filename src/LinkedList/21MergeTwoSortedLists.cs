@@ -62,7 +62,7 @@ namespace MergeTwoSortedLists
             return MergeTwoLists(l1.next, l2);
         }
 
-        int LinkedListLengthCompare(ListNode l1, ListNode l2)
+        static int LinkedListLengthCompare(ListNode l1, ListNode l2)
         {
             while (true)
             {
@@ -74,7 +74,7 @@ namespace MergeTwoSortedLists
             }
         }
 
-        ListNode LinkedListLastNode(ListNode l)
+        static ListNode LinkedListLastNode(ListNode l)
         {
             while (l.next != null)
             {
@@ -83,7 +83,7 @@ namespace MergeTwoSortedLists
             return l;
         }
 
-        ListNode Insert(ListNode sourceNode, ListNode targetList)
+        static ListNode Insert(ListNode sourceNode, ListNode targetList)
         {
             if (sourceNode.val <= targetList.val)
             {

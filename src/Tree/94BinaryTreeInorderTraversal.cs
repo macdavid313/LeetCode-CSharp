@@ -16,10 +16,9 @@ namespace BinaryTreeInorderTraversal
 
     public class Solution
     {
-
         public IList<int> InorderTraversal(TreeNode root)
         {
-            if (root is null) return new int[0];
+            if (root is null) return System.Array.Empty<int>();
             var elms = new List<int>();
             var stack = new Stack<TreeNode>();
             var node = root;

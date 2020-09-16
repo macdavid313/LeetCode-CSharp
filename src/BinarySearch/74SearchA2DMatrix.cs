@@ -15,7 +15,6 @@ namespace SearchA2DMatrix
 {
     public class Solution
     {
-
         public bool SearchMatrix(int[][] matrix, int target)
         {
             if (matrix is null) throw new ArgumentNullException(nameof(matrix));

@@ -18,8 +18,8 @@ namespace CombinationSumIII
     {
         public IList<IList<int>> CombinationSum3(int k, int n)
         {
-            if (n < 1) throw new ArgumentException(nameof(n));
-            if (k < 1) throw new ArgumentException(nameof(k));
+            if (n < 1) throw new ArgumentException(null, nameof(n));
+            if (k < 1) throw new ArgumentException(null, nameof(k));
 
             var combinations = new List<int[]>();
             Span<int> buffer = stackalloc int[k];

@@ -17,7 +17,7 @@ namespace BinaryTreePaths
     {
         public IList<string> BinaryTreePaths(TreeNode root)
         {
-            if (root is null) return new string[0];
+            if (root is null) return System.Array.Empty<string>();
             if (root.left is null && root.right is null) return new string[1] { root.val.ToString() };
             var path = new List<string>();
             var allPaths = new List<string>();

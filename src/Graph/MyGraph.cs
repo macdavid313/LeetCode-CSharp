@@ -45,7 +45,7 @@ namespace MyGraph
 
         public IEnumerable<int> Adj(int v) => adj[v];
 
-        public override string ToString() => string.Format("<Graph, %d Vertices, %d edges>", V, E);
+        public override string ToString() => $"<Graph, {V} Vertices, {E} edges>";
 
         public static int Degree(Graph g, int v) => g.Adj(v).Count();
 

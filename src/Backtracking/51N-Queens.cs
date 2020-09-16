@@ -21,7 +21,7 @@ namespace NQueens
         {
             if (n < 0) throw new ArgumentOutOfRangeException(nameof(n));
             if (n == 1) return new string[1][] { new string[1] { "Q" } };
-            if (n == 2 || n == 3) return new string[0][] { };
+            if (n == 2 || n == 3) return Array.Empty<string[]>();
 
             var allSolutions = new List<string[]>();
             var permutation = new int[n];
@@ -58,7 +58,7 @@ namespace NQueens
             }
         }
 
-        bool NoConflict(int[] permutation, int row)
+        static bool NoConflict(int[] permutation, int row)
         {
             for (var i = 0; i < row; i++)
             {
@@ -70,7 +70,7 @@ namespace NQueens
             return true;
         }
 
-        string[] SolutionToStringList(int[] permutation)
+        static string[] SolutionToStringList(int[] permutation)
         {
             var n = permutation.Length;
             var res = new string[n];

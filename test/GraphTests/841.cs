@@ -24,7 +24,7 @@ namespace GraphTests
                 new int[] { 1 },
                 new int[] { 2 },
                 new int[] { 3 },
-                new int[0]
+                System.Array.Empty<int>()
             };
             var expected = true;
             var actual = sln.CanVisitAllRooms(rooms);

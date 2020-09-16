@@ -66,10 +66,10 @@ namespace WordSearch
             return false;
         }
 
-        int To1DPosition(int i, int j, int n) => i * n + j;
+        static int To1DPosition(int i, int j, int n) => i * n + j;
 
-        bool Visited(HashSet<int> visited, int i, int j, int n) => visited.Contains(To1DPosition(i, j, n));
+        static bool Visited(HashSet<int> visited, int i, int j, int n) => visited.Contains(To1DPosition(i, j, n));
 
-        bool IsValidPosition(int i, int j, int m, int n) => i >= 0 && i < m && j >= 0 && j < n;
+        static bool IsValidPosition(int i, int j, int m, int n) => i >= 0 && i < m && j >= 0 && j < n;
     }
 }

@@ -20,7 +20,7 @@ namespace UnionFindTests
         [Fact]
         public void TestEmptyArray()
         {
-            var nums = new int[] { };
+            var nums = System.Array.Empty<int>();
             var len = sln.LongestConsecutive(nums);
             Assert.Equal(0, len);
             Assert.Equal(len, sln2.LongestConsecutive(nums));

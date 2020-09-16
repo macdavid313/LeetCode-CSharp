@@ -44,7 +44,7 @@ namespace SudokuSolver
             return false;
         }
 
-        void FindNextToFill(char[][] board, out int i, out int j)
+        static void FindNextToFill(char[][] board, out int i, out int j)
         {
             foreach (var x in Enumerable.Range(0, 9))
             {
@@ -62,7 +62,7 @@ namespace SudokuSolver
             j = -1;
         }
 
-        bool IsValid(char[][] board, int i, int j, char choice)
+        static bool IsValid(char[][] board, int i, int j, char choice)
         {
             // check row
             for (var col = 0; col < 9; col++)
@@ -83,7 +83,7 @@ namespace SudokuSolver
             return true;
         }
 
-        List<Tuple<int, int, char>> MakeImplications(char[][] board, int i, int j, char choice)
+        static List<Tuple<int, int, char>> MakeImplications(char[][] board, int i, int j, char choice)
         {
             board[i][j] = choice;
             var impl = new List<Tuple<int, int, char>>()
@@ -148,7 +148,7 @@ namespace SudokuSolver
             return impl;
         }
 
-        void UndoImplications(char[][] board, List<Tuple<int, int, char>> impl)
+        static void UndoImplications(char[][] board, List<Tuple<int, int, char>> impl)
         {
             foreach ((var x, var y, var _) in impl)
             {

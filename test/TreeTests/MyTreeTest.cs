@@ -16,7 +16,7 @@ namespace TreeTests
 {
     public class BinarySearchTreeTest
     {
-        BinarySearchTree<char, char> GetBinarySearchTree()
+        static BinarySearchTree<char, char> GetBinarySearchTree()
         {
             var bst = new BinarySearchTree<char, char>();
             var chars = new char[] { 'S', 'E', 'X', 'A', 'R', 'C', 'H', 'M' };
@@ -166,7 +166,7 @@ namespace TreeTests
 
     public class LeftLeaningRedBlackTreeTest
     {
-        LeftLeaningRedBlackTree<char, char> GetLeftLeaningRedBlackTree()
+        static LeftLeaningRedBlackTree<char, char> GetLeftLeaningRedBlackTree()
         {
             var tree = new LeftLeaningRedBlackTree<char, char>();
             var elems = "MJRELPXCHSA";

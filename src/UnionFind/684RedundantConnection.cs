@@ -10,6 +10,7 @@
 
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace RedundantConnection
 {
@@ -17,7 +18,7 @@ namespace RedundantConnection
     {
         public int[] FindRedundantConnection(int[][] edges)
         {
-            if (edges.Length == 1) return new int[0];
+            if (edges.Length == 1) return Array.Empty<int>();
             Span<int> id = stackalloc int[edges.Length];
             Span<int> sz = stackalloc int[edges.Length];
             var uf = new SpanUF(id, sz);

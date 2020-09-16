@@ -19,7 +19,7 @@ namespace UnionFindTests
         [Fact]
         public void TestZeroElement()
         {
-            var M = new int[0][];
+            var M = System.Array.Empty<int[]>();
             var expected = 0;
             var actual = sln.FindCircleNum(M);
             Assert.Equal(actual, expected);

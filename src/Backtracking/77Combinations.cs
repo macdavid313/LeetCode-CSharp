@@ -18,7 +18,7 @@ namespace Combinations
     {
         public IList<IList<int>> Combine(int n, int k)
         {
-            if (k < 1 || k > n) throw new ArgumentException(nameof(k));
+            if (k < 1 || k > n) throw new ArgumentException(null, nameof(k));
             if (n == 1) return new int[1][] { new int[] { 1 } };
             if (n == k)
             {
@@ -53,7 +53,7 @@ namespace Combinations
             }
         }
 
-        int GetLength(int n, int k)
+        static int GetLength(int n, int k)
         {
             if (n == k) return 1;
             if (n - k == 1) return n;

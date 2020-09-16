@@ -206,7 +206,7 @@ namespace MyQueue
             }
         }
 
-        int ParentIdx(int k) => k % 2 == 1 ? k / 2 : k / 2 - 1;
+        static int ParentIdx(int k) => k % 2 == 1 ? k / 2 : k / 2 - 1;
 
         bool Less(int i, int j) => pq[i].CompareTo(pq[j]) == -1;
 

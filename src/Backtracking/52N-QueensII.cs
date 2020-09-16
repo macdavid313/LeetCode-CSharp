@@ -46,7 +46,7 @@ namespace NQueensII
             }
         }
 
-        bool NoConflict(Span<int> permutation, int row, int col)
+        static bool NoConflict(Span<int> permutation, int row, int col)
         {
             for (var i = 0; i < row; i++)
             {

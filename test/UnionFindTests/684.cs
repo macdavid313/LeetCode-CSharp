@@ -20,7 +20,7 @@ namespace UnionFindTests
         public void TestSingleEdge()
         {
             var edges = new int[1][] { new int[] { 1, 2 } };
-            var expected = new int[0];
+            var expected = System.Array.Empty<int>();
             var actual = sln.FindRedundantConnection(edges);
             Assert.Equal(expected, actual);
         }

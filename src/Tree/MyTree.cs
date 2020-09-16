@@ -52,13 +52,13 @@ namespace MyTree
 
         public int Size() => Size(root);
 
-        int Size(Node node) => node is null ? 0 : node.Count;
+        static int Size(Node node) => node is null ? 0 : node.Count;
 
         public TValue Get(TKey key) => Get(root, key);
 
         TValue Get(Node node, TKey key)
         {
-            if (node is null) throw new ArgumentException(nameof(key));
+            if (node is null) throw new ArgumentException(null, nameof(key));
             var cmp = comparer.Compare(node.key, key);
             if (cmp == 0) return node.val;
             else if (cmp > 0) return Get(node.left, key);
@@ -142,7 +142,7 @@ namespace MyTree
             return Min(root).key;
         }
 
-        Node Min(Node node)
+        static Node Min(Node node)
         {
             while (node.left is object) node = node.left;
             return node;
@@ -155,7 +155,7 @@ namespace MyTree
             return Max(root).key;
         }
 
-        Node Max(Node node)
+        static Node Max(Node node)
         {
             while (node.right is object) node = node.right;
             return node;
@@ -167,7 +167,7 @@ namespace MyTree
             if (Size() == 0)
                 throw new InvalidOperationException();
             var node = Floor(root, key);
-            if (node is null) throw new ArgumentException(nameof(key));
+            if (node is null) throw new ArgumentException(null, nameof(key));
             return node.val;
         }
 
@@ -187,7 +187,7 @@ namespace MyTree
             if (Size() == 0)
                 throw new InvalidOperationException();
             var node = Ceiling(root, key);
-            if (node is null) throw new ArgumentException(nameof(key));
+            if (node is null) throw new ArgumentException(null, nameof(key));
             return node.val;
         }
 
@@ -312,13 +312,13 @@ namespace MyTree
             }
         }
 
-        bool IsRed(Node node) => !(node is null) && node.IsRed;
+        static bool IsRed(Node node) => !(node is null) && node.IsRed;
 
         public int Size() => Size(root);
 
-        int Size(Node node) => node is null ? 0 : node.Count;
+        static int Size(Node node) => node is null ? 0 : node.Count;
 
-        Node RotateLeft(Node x)
+        static Node RotateLeft(Node x)
         {
             Node y = x.right;
             x.right = y.left;
@@ -330,7 +330,7 @@ namespace MyTree
             return y;
         }
 
-        Node RotateRight(Node x)
+        static Node RotateRight(Node x)
         {
             Node y = x.left;
             x.left = y.right;
@@ -342,7 +342,7 @@ namespace MyTree
             return y;
         }
 
-        void FlipColors(Node node)
+        static void FlipColors(Node node)
         {
             node.color = Color.RED;
             node.left.color = Color.BLACK;

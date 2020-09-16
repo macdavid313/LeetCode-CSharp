@@ -97,7 +97,7 @@ namespace Permutations
             nums[j] = tmp;
         } */
 
-        int Factorial(int n)
+        static int Factorial(int n)
         {
             if (n < 0)
                 throw new InvalidOperationException();

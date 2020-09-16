@@ -19,7 +19,7 @@ namespace FindFirstAndLastPositionOfElementInSortedArray
             return new int[] { left, right };
         }
 
-        void BinarySearch(int[] nums, int target, out int left, out int right)
+        static void BinarySearch(int[] nums, int target, out int left, out int right)
         {
             left = 0;
             right = nums.Length - 1;
@@ -39,7 +39,7 @@ namespace FindFirstAndLastPositionOfElementInSortedArray
             right = -1;
         }
 
-        int SearchLeft(int[] nums, int target, int lo, int hi)
+        static int SearchLeft(int[] nums, int target, int lo, int hi)
         {
             while (lo < hi)
             {
@@ -50,7 +50,7 @@ namespace FindFirstAndLastPositionOfElementInSortedArray
             return lo;
         }
 
-        int SearchRight(int[] nums, int target, int lo, int hi)
+        static int SearchRight(int[] nums, int target, int lo, int hi)
         {
             while (lo < hi)
             {

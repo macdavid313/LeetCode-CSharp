@@ -18,7 +18,7 @@ namespace BinaryTreeLevelOrderTraversalII
     {
         public IList<IList<int>> LevelOrderBottom(TreeNode root)
         {
-            if (root is null) return new int[0][];
+            if (root is null) return System.Array.Empty<int[]>();
             var levels = new Stack<int[]>();
             var level = new Queue<TreeNode>();
             level.Enqueue(root);
