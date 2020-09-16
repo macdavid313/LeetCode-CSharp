@@ -64,7 +64,19 @@ namespace MyGraph
 
     public class DirectedGraph : IGraph
     {
+        public int V => throw new NotImplementedException();
 
+        public int E => throw new NotImplementedException();
+
+        public void AddEdge(int v, int w)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<int> Adj(int v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public class DepthFirstPaths
