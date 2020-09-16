@@ -16,7 +16,7 @@ namespace LinkedListTests
     {
         readonly Solution sln = new Solution();
 
-        bool LinkedListEquals(ListNode l1, ListNode l2)
+        static bool LinkedListEquals(ListNode l1, ListNode l2)
         {
             while (true)
             {
