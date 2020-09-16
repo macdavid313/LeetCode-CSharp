@@ -7,6 +7,7 @@
  */
 
 
+using System;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -59,6 +60,11 @@ namespace MyGraph
             });
             return max;
         }
+    }
+
+    public class DirectedGraph : IGraph
+    {
+
     }
 
     public class DepthFirstPaths
@@ -155,6 +161,79 @@ namespace MyGraph
                 return paths;
             }
             else return null;
+        }
+    }
+
+    public class ConnectedComponents
+    {
+        readonly bool[] marked;
+        readonly int[] id;
+        readonly int count;
+
+        public int Count { get => count; }
+
+        public ConnectedComponents(IGraph g)
+        {
+            marked = new bool[g.V];
+            id = new int[g.V];
+            count = 0;
+            foreach (var v in Enumerable.Range(0, g.V))
+            {
+                if (!marked[v])
+                {
+                    DFS(g, v);
+                    count += 1; // iterate to the next cc
+                }
+            }
+        }
+
+        void DFS(IGraph g, int v)
+        {
+            marked[v] = true;
+            id[v] = count;
+            foreach (var w in g.Adj(v).Where(w => !marked[w]))
+            {
+                DFS(g, w);
+            }
+        }
+
+        public bool Connected(int v, int w) => id[v] == id[w];
+
+        public int ID(int v) => id[v];
+    }
+
+    public class CycleDetect
+    {
+        readonly bool[] marked;
+
+        public bool HasCycle { get; private set; }
+
+        public CycleDetect(IGraph g)
+        {
+            marked = new bool[g.V];
+            foreach (var v in Enumerable.Range(0, g.V))
+            {
+                if (!marked[v])
+                {
+                    if (DFS(g, v, v))
+                    {
+                        HasCycle = true;
+                        return;
+                    }
+                }
+            }
+            HasCycle = false;
+        }
+
+        bool DFS(IGraph g, int v, int source)
+        {
+            marked[v] = true;
+            if (v == source) return true;
+            foreach (var w in g.Adj(v).Where(w => !marked[w]))
+            {
+                if (DFS(g, w, source)) return true;
+            }
+            return false;
         }
     }
 }
