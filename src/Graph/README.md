@@ -10,3 +10,4 @@
 
 * Wikipedia, [Category: Graph algotithms](https://en.wikipedia.org/wiki/Category:Graph_algorithms)
 * Wikipedia, [Topological sorting](https://en.wikipedia.org/wiki/Topological_sorting)
+* Wikipedia, [Kosaraju's algorithm](https://en.wikipedia.org/wiki/Kosaraju%27s_algorithm)
