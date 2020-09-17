@@ -326,4 +326,93 @@ namespace MyGraph
         }
     }
 
+    public class DepthFirstOrder
+    {
+        readonly bool[] marked;
+        readonly Queue<int> pre;
+        readonly Queue<int> post;
+        readonly Stack<int> reversePost;
+
+        public IEnumerable<int> PreOrder { get => pre; }
+
+        public IEnumerable<int> PostOrder { get => post; }
+
+        public IEnumerable<int> ReversePostOrder { get => reversePost; }
+        public DepthFirstOrder(IGraph g)
+        {
+            marked = new bool[g.V];
+            pre = new Queue<int>(g.V);
+            post = new Queue<int>(g.V);
+            reversePost = new Stack<int>(g.V);
+            foreach (var v in Enumerable.Range(0, g.V).Where(v => !marked[v]))
+            {
+                DFS(g, v);
+            }
+        }
+
+        void DFS(IGraph g, int v)
+        {
+            marked[v] = true;
+            pre.Enqueue(v);
+            foreach (var w in g.Adj(v).Where(w => !marked[w]))
+            {
+                DFS(g, w);
+            }
+            post.Enqueue(v);
+            reversePost.Push(v);
+        }
+    }
+
+    public class Topological
+    {
+        readonly IEnumerable<int> order;
+
+        public IEnumerable<int> Order { get; }
+
+        public bool IsDAG { get => order is object; }
+
+        public Topological(DirectedGraph g)
+        {
+            var directedCycleDetect = new DirectedCycleDetect(g);
+            if (!directedCycleDetect.HasCycle)
+            {
+                var dfsOrder = new DepthFirstOrder(g);
+                order = dfsOrder.ReversePostOrder;
+            }
+        }
+    }
+
+    public class KosarajuSharirScc
+    {
+        readonly bool[] marked;
+        readonly int[] id;
+        readonly int count;
+
+        public int Count { get => count; }
+
+        public KosarajuSharirScc(DirectedGraph g)
+        {
+            marked = new bool[g.V];
+            id = new int[g.V];
+            var order = new DepthFirstOrder(g);
+            foreach (var v in order.ReversePostOrder)
+            {
+                if (!marked[v])
+                {
+                    DFS(g, v);
+                    count += 1;
+                }
+            }
+        }
+
+        void DFS(DirectedGraph g, int v)
+        {
+            marked[v] = true;
+            id[v] = count;
+            foreach (var w in g.Adj(v).Where(w => !marked[w]))
+            {
+                DFS(g, w);
+            }
+        }
+    }
 }
