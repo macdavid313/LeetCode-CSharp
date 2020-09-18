@@ -2,10 +2,11 @@
 
 [Problems](https://leetcode.com/tag/graph/) dedicated to **Graph**.
 
-|  ID   |                                 Name                                 | Difficulty |
-| :---: | :------------------------------------------------------------------: | :--------: |
-|  841  |   [Keys and Rooms](https://leetcode.com/problems/keys-and-rooms/)    |   Medium   |
-|  210  | [Course Schedule](https://leetcode.com/problems/course-schedule-ii/) |   Medium   |
+|  ID   |                                  Name                                   | Difficulty |
+| :---: | :---------------------------------------------------------------------: | :--------: |
+|  841  |     [Keys and Rooms](https://leetcode.com/problems/keys-and-rooms/)     |   Medium   |
+|  207  |    [Course Schedule](https://leetcode.com/problems/course-schedule/)    |   Medium   |
+|  210  | [Course Schedule II](https://leetcode.com/problems/course-schedule-ii/) |   Medium   |
 
 ## References
 
