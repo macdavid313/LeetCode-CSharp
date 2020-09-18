@@ -6,7 +6,7 @@
  * Runtime: 112 ms, faster than 77.54% of C# online submissions for Sort List.
  * Memory Usage: 29.8 MB, less than 59.89% of C# online submissions for Sort List.
  * -----
- * Last Modified: Friday, 18th September 2020 6:35:22 pm
+ * Last Modified: Friday, 18th September 2020 6:42:26 pm
  * Modified By: David Gu (macdavid313@gmail.com>)
  * -----
  * Copyright (c) David Gu 2020
@@ -45,15 +45,13 @@ namespace SortList
             if (l2 is null) return l1;
             if (l1.val < l2.val)
             {
-                var head = l1;
-                head.next = Merge2SortedList(l1.next, l2);
-                return head;
+                l1.next = Merge2SortedList(l1.next, l2);
+                return l1;
             }
             else
             {
-                var head = l2;
-                head.next = Merge2SortedList(l1, l2.next);
-                return head;
+                l2.next = Merge2SortedList(l1, l2.next);
+                return l2;
             }
         }
     }
