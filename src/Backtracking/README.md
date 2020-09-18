@@ -14,6 +14,7 @@ A set of [problems](https://leetcode.com/tag/backtracking/) tagged as **Backtrac
 |  216  |                   [Combination Sum III](https://leetcode.com/problems/combination-sum-iii/)                   |   Medium   |
 |  79   |                           [Word Search](https://leetcode.com/problems/word-search/)                           |   Medium   |
 |  37   |                         [Sudoku Solver](https://leetcode.com/problems/sudoku-solver/)                         |    Hard    |
+|  47   |                       [Permutations II](https://leetcode.com/problems/permutations-ii/)                       |   Medium   |
 
 ## References
 
