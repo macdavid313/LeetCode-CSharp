@@ -14,3 +14,5 @@
 * Wikipedia, [Topological sorting](https://en.wikipedia.org/wiki/Topological_sorting)
 * Wikipedia, [Kosaraju's algorithm](https://en.wikipedia.org/wiki/Kosaraju%27s_algorithm)
 * Wikipedia, [Minimum spanning tree](https://en.wikipedia.org/wiki/Minimum_spanning_tree)
+* Wikipedia, [Prim's algorithm](https://en.wikipedia.org/wiki/Prim%27s_algorithm)
+* Wikipedia, [Shortest path problem](https://en.wikipedia.org/wiki/Shortest_path_problem)
