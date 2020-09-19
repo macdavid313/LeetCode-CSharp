@@ -12,6 +12,7 @@ Typically, when using the *Union Find* approach with path compression and weight
 |  684  |         [Redundant Connection](https://leetcode.com/problems/redundant-connection/)         |   Medium   |
 |  200  |            [Number of Islands](https://leetcode.com/problems/number-of-islands/)            |   Medium   |
 |  685  |      [Redundant Connection II](https://leetcode.com/problems/redundant-connection-ii/)      |    Hard    |
+|  261  |             [Graph Valid Tree](https://leetcode.com/problems/graph-valid-tree)              |   Medium   |
 
 ## References
 
