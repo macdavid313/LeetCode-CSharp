@@ -3,10 +3,10 @@
  * Project: UnionFind
  * Created Date: Thursday, 17th September 2020 9:29:11 pm
  * Author: David Gu (macdavid313@gmail.com)
- * Runtime: 248 ms, faster than 83.33% of C# online submissions for Redundant Connection II.
- * Memory Usage: 31.8 MB, less than 58.33% of C# online submissions for Redundant Connection II.
+ * Runtime: 240 ms, faster than 86.36% of C# online submissions for Redundant Connection II.
+ * Memory Usage: 31.3 MB, less than 100.00% of C# online submissions for Redundant Connection II.
  * -----
- * Last Modified: Thursday, 17th September 2020 10:05:49 pm
+ * Last Modified: Saturday, 19th September 2020 4:23:19 pm
  * Modified By: David Gu (macdavid313@gmail.com>)
  * -----
  * Copyright (c) David Gu 2020
@@ -65,16 +65,16 @@ namespace RedundantConnectionII
     ref struct SpanUF
     {
         readonly Span<int> id;
-        readonly Span<int> sz;
+        readonly Span<int> rank;
 
-        public SpanUF(Span<int> id, Span<int> sz)
+        public SpanUF(Span<int> id, Span<int> rank)
         {
             this.id = id;
-            this.sz = sz;
+            this.rank = rank;
             foreach (var i in Enumerable.Range(0, id.Length))
             {
                 id[i] = i;
-                sz[i] = 1;
+                rank[i] = 1;
             }
         }
 
@@ -84,15 +84,15 @@ namespace RedundantConnectionII
             q = Root(q);
             if (p != q)
             {
-                if (sz[p] < sz[q])
+                if (rank[p] < rank[q])
                 {
                     id[p] = q;
-                    sz[q] = sz[p] + sz[q];
+                    rank[q] += 1;
                 }
                 else
                 {
                     id[q] = p;
-                    sz[p] = sz[p] + sz[q];
+                    rank[p] += 1;
                 }
             }
         }
