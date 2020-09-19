@@ -14,46 +14,52 @@ namespace MyUnionFind
     public class UF
     {
         readonly int[] id;
-        readonly int[] sz;
+        readonly int[] rank;
         public int Count { get; private set; }
 
         public UF(int n)
         {
-            id = new int[n];
-            sz = new int[n];
-            for (var i = 0; i < n; i++)
+            if (n > 0)
             {
-                id[i] = i;
-                sz[i] = 1;
+                id = new int[n];
+                rank = new int[n];
+                Count = n;
+                for (var i = 0; i < n; i++)
+                {
+                    id[i] = i;
+                    rank[i] = 1;
+                }
             }
+            else throw new ArgumentException(null, nameof(n));
         }
 
         public void Union(int p, int q)
         {
-            int pRoot = Find(p);
-            int qRoot = Find(q);
-            if (pRoot != qRoot)
+            p = Find(p);
+            q = Find(q);
+            if (p != q)
             {
-                if (sz[pRoot] < sz[qRoot])
+                if (rank[p] < rank[q])
                 {
-                    id[pRoot] = qRoot;
-                    sz[qRoot] += sz[pRoot];
+                    id[p] = q;
+                    rank[q] += 1;
                 }
                 else
                 {
-                    id[qRoot] = pRoot;
-                    sz[pRoot] += sz[qRoot];
+                    id[q] = p;
+                    rank[p] += 1;
                 }
                 Count -= 1;
             }
         }
 
-        public int Find(int i)
+        int Root(int i)
         {
-            if (id[i] != i)
-                id[i] = Find(id[i]);
+            if (id[i] != i) id[i] = Root(id[i]);
             return id[i];
         }
+
+        public int Find(int i) => Root(i);
 
         public bool Connected(int p, int q) => Find(p) == Find(q);
     }
@@ -61,47 +67,52 @@ namespace MyUnionFind
     public ref struct SpanUF
     {
         readonly Span<int> id;
-        readonly Span<int> sz;
+        readonly Span<int> rank;
         public int Count { get; private set; }
 
-        public SpanUF(Span<int> id, Span<int> sz)
+        public SpanUF(Span<int> id, Span<int> rank)
         {
-            this.id = id;
-            this.sz = sz;
-            Count = id.Length;
-            for (var i = 0; i < Count; i++)
+            if (id.Length > 0)
             {
-                id[i] = i;
-                sz[i] = 1;
+                this.id = id;
+                this.rank = rank;
+                Count = id.Length;
+                for (var i = 0; i < Count; i++)
+                {
+                    id[i] = i;
+                    rank[i] = 1;
+                }
             }
+            else throw new ArgumentException(null, nameof(id));
         }
 
         public void Union(int p, int q)
         {
-            int pRoot = Find(p);
-            int qRoot = Find(q);
-            if (pRoot != qRoot)
+            p = Find(p);
+            q = Find(q);
+            if (p != q)
             {
-                if (sz[pRoot] < sz[qRoot])
+                if (rank[p] < rank[q])
                 {
-                    id[pRoot] = qRoot;
-                    sz[qRoot] += sz[pRoot];
+                    id[p] = q;
+                    rank[q] += 1;
                 }
                 else
                 {
-                    id[qRoot] = pRoot;
-                    sz[pRoot] += sz[qRoot];
+                    id[q] = p;
+                    rank[p] += 1;
                 }
                 Count -= 1;
             }
         }
 
-        public int Find(int i)
+        int Root(int i)
         {
-            if (id[i] != i)
-                id[i] = Find(id[i]);
+            if (id[i] != i) id[i] = Root(id[i]);
             return id[i];
         }
+
+        public int Find(int i) => Root(i);
 
         public bool Connected(int p, int q) => Find(p) == Find(q);
     }
