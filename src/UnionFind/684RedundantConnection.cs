@@ -3,8 +3,8 @@
  * Project: UnionFind
  * Created Date: Sunday, 23rd August 2020 7:46:16 pm
  * Author: David Gu (macdavid313@gmail.com)
- * Runtime: 232 ms, faster than 100.00% of C# online submissions for Redundant Connection.
- * Memory Usage: 30.8 MB, less than 100.00% of C# online submissions for Redundant Connection.
+ * Runtime: 244 ms, faster than 70.09% of C# online submissions for Redundant Connection.
+ * Memory Usage: 31 MB, less than 88.89% of C# online submissions for Redundant Connection.
  * Copyright (c) David Gu 2020
  */
 
@@ -19,8 +19,8 @@ namespace RedundantConnection
         {
             if (edges.Length == 1) return Array.Empty<int>();
             Span<int> id = stackalloc int[edges.Length];
-            Span<int> sz = stackalloc int[edges.Length];
-            var uf = new SpanUF(id, sz);
+            Span<int> rank = stackalloc int[edges.Length];
+            var uf = new SpanUF(id, rank);
             foreach (var edge in edges)
             {
                 uf.Union(edge[0] - 1, edge[1] - 1);
@@ -32,20 +32,20 @@ namespace RedundantConnection
     ref struct SpanUF
     {
         readonly Span<int> id;
-        readonly Span<int> sz;
+        readonly Span<int> rank;
         public int Count { get; private set; }
 
         int u, v;
 
-        public SpanUF(Span<int> id, Span<int> sz)
+        public SpanUF(Span<int> id, Span<int> rank)
         {
             this.id = id;
-            this.sz = sz;
+            this.rank = rank;
             Count = id.Length;
             for (var i = 0; i < Count; i++)
             {
                 id[i] = i;
-                sz[i] = 1;
+                rank[i] = 1;
             }
             u = 0;
             v = 0;
@@ -57,15 +57,15 @@ namespace RedundantConnection
             int qRoot = Find(q);
             if (pRoot != qRoot)
             {
-                if (sz[pRoot] < sz[qRoot])
+                if (rank[pRoot] < rank[qRoot])
                 {
                     id[pRoot] = qRoot;
-                    sz[qRoot] += sz[pRoot];
+                    rank[qRoot] += 1;
                 }
                 else
                 {
                     id[qRoot] = pRoot;
-                    sz[pRoot] += sz[qRoot];
+                    rank[pRoot] += 1;
                 }
                 Count -= 1;
             }
