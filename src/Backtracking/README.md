@@ -15,6 +15,7 @@ A set of [problems](https://leetcode.com/tag/backtracking/) tagged as **Backtrac
 |  79   |                           [Word Search](https://leetcode.com/problems/word-search/)                           |   Medium   |
 |  37   |                         [Sudoku Solver](https://leetcode.com/problems/sudoku-solver/)                         |    Hard    |
 |  47   |                       [Permutations II](https://leetcode.com/problems/permutations-ii/)                       |   Medium   |
+|  78   |                               [Subsets](https://leetcode.com/problems/subsets/)                               |   Medium   |
 
 ## References
 
