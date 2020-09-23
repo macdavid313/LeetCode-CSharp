@@ -11,6 +11,15 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
+using MyQueue;
+using System.Runtime.InteropServices.ComTypes;
+using System.Runtime.InteropServices;
+using System.Dynamic;
+using System.Numerics;
+using System.Diagnostics.Tracing;
+using System.ComponentModel;
+using System.Collections.Specialized;
+
 namespace MyGraph
 {
     public interface IGraph
@@ -412,6 +421,199 @@ namespace MyGraph
             foreach (var w in g.Adj(v).Where(w => !marked[w]))
             {
                 DFS(g, w);
+            }
+        }
+    }
+
+    public readonly struct Edge : IComparable<Edge>, IEquatable<Edge>
+    {
+        readonly int _v;
+        readonly int _w;
+        readonly double _weight;
+
+        public readonly double Weight { get => _weight; }
+
+        public static Comparer<Edge> DefaultComparer
+        {
+            get => Comparer<Edge>.Create(new Comparison<Edge>((e1, e2) => e1.Weight.CompareTo(e2.Weight)));
+        }
+
+        public Edge(int v, int w, double weight)
+        {
+            _v = v;
+            _w = w;
+            _weight = weight;
+        }
+
+        int IComparable<Edge>.CompareTo(Edge other) => Weight.CompareTo(other.Weight);
+
+        public void Deconstruct(out int v, out int w, out double weight)
+        {
+            v = _v;
+            w = _w;
+            weight = _weight;
+        }
+
+        public bool Equals(Edge other)
+        {
+            (var v2, var w2, var weight2) = other;
+            if (_weight != weight2) return false;
+            return (_v == v2 && _w == w2) || (_v == w2 && _w == v2);
+        }
+
+        public override string ToString() => string.Format("<Edge {0} -> {1}, {2}>", _v, _w, _weight);
+    }
+
+    public class EdgeWeightedGraph
+    {
+        readonly int _V;
+        int _E;
+        readonly List<Edge>[] _adj;
+
+        public int V { get => _V; }
+        public int E { get => _E; }
+
+        public EdgeWeightedGraph(int v)
+        {
+            _V = v;
+            _E = 0;
+            _adj = new List<Edge>[V];
+            foreach (var i in Enumerable.Range(0, V))
+            {
+                _adj[i] = new List<Edge>();
+            }
+        }
+
+        public void AddEdge(Edge e)
+        {
+            (var v, var w, var weight) = e;
+            _adj[v].Add(e);
+            _adj[w].Add(new Edge(w, v, weight));
+            _E += 1;
+        }
+
+        public IEnumerable<Edge> Adj(int v) => _adj[v];
+
+        public IEnumerable<Edge> Edges
+        {
+            get
+            {
+                foreach (var v in Enumerable.Range(0, V))
+                {
+                    foreach (var edge in _adj[v])
+                    {
+                        (var _, var w, var _) = edge;
+                        if (w > v) yield return edge;
+                    }
+                }
+            }
+        }
+    }
+
+    interface IMinimumSpanningTree
+    {
+        IEnumerable<Edge> Edges { get; }
+        double Weight { get; }
+    }
+
+    public class PrimLazyMST : IMinimumSpanningTree
+    {
+        readonly Queue<Edge> _mst;
+        readonly double _weight;
+
+        public IEnumerable<Edge> Edges { get => _mst; }
+        public double Weight { get => _weight; }
+
+        public PrimLazyMST(EdgeWeightedGraph g)
+        {
+            g = g ?? throw new ArgumentNullException(nameof(g));
+            var marked = new bool[g.V];
+            _mst = new Queue<Edge>(g.V);
+            _weight = 0.0;
+            var minPQ = PriorityQueue<Edge>.MinPQ(g.V, Edge.DefaultComparer);
+            Visit(g, 0, marked, minPQ);
+            while (!minPQ.IsEmpty)
+            {
+                var edge = minPQ.Dequeue();
+                (var v, var w, var weight) = edge;
+                if (marked[v] && marked[w]) continue;
+                _mst.Enqueue(edge);
+                _weight += weight;
+                if (!marked[v]) Visit(g, v, marked, minPQ);
+                if (!marked[w]) Visit(g, w, marked, minPQ);
+            }
+        }
+
+        void Visit(EdgeWeightedGraph g, int v, bool[] marked, PriorityQueue<Edge> minPQ)
+        {
+            marked[v] = true;
+            foreach (var edge in g.Adj(v))
+            {
+                (var _, var w, var _) = edge;
+                if (!marked[w]) minPQ.Enqueue(edge);
+            }
+        }
+    }
+
+    public class PrimEagerMST : IMinimumSpanningTree
+    {
+        readonly int[] _edgeTo;
+        readonly double[] _distTo;
+
+        public IEnumerable<Edge> Edges
+        {
+            get
+            {
+                var marked = new bool[_edgeTo.Length];
+                var edges = new List<Edge>(_edgeTo.Length - 1);
+                CollectEdgesDFS(0, marked, edges);
+                return edges;
+            }
+        }
+
+        void CollectEdgesDFS(int v, bool[] marked, List<Edge> edges)
+        {
+            marked[v] = true;
+            foreach (var w in Enumerable.Range(0, _edgeTo.Length).Where(w => w != v && !marked[w] && _edgeTo[w] == v))
+            {
+                edges.Add(new Edge(v, w, _distTo[w]));
+                CollectEdgesDFS(w, marked, edges);
+            }
+        }
+
+        public double Weight { get => Edges.Select(edge => edge.Weight).Sum(); }
+
+        public PrimEagerMST(EdgeWeightedGraph g)
+        {
+            var marked = new bool[g.V];
+            _edgeTo = new int[g.V];
+            _distTo = Enumerable.Repeat(double.PositiveInfinity, g.V).ToArray();
+
+            var indexMinPQ = IndexPriorityQueue<double>.IndexMinPQ(g.V);
+            _distTo[0] = 0.0;
+            indexMinPQ.Enqueue(0, 0.0);
+            while (!indexMinPQ.IsEmpty)
+            {
+                (var v, var _) = indexMinPQ.Dequeue();
+                Visit(g, v, marked, indexMinPQ);
+            }
+
+        }
+
+        void Visit(EdgeWeightedGraph g, int v, bool[] marked, IndexPriorityQueue<double> indexMinPQ)
+        {
+            marked[v] = true;
+            foreach (var edge in g.Adj(v))
+            {
+                (var _, var w, var weight) = edge;
+                if (marked[w]) continue;
+                if (weight < _distTo[w])
+                {
+                    _edgeTo[w] = v;
+                    _distTo[w] = weight;
+                    if (indexMinPQ.Contains(w)) indexMinPQ.DecreaseKey(w, weight);
+                    else indexMinPQ.Enqueue(w, weight);
+                }
             }
         }
     }

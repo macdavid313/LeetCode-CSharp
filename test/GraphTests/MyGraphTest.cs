@@ -146,4 +146,81 @@ namespace GraphTests
             Assert.Equal(expectedCycle, actualCycle);
         }
     }
+
+    static class TinyEdgeDirectedGraph
+    {
+        static readonly EdgeWeightedGraph _g;
+
+        public static EdgeWeightedGraph G { get => _g; }
+
+        static TinyEdgeDirectedGraph()
+        {
+            _g = new EdgeWeightedGraph(8);
+            _g.AddEdge(new Edge(4, 5, 0.35));
+            _g.AddEdge(new Edge(4, 7, 0.37));
+            _g.AddEdge(new Edge(5, 7, 0.28));
+            _g.AddEdge(new Edge(0, 7, 0.16));
+            _g.AddEdge(new Edge(1, 5, 0.32));
+            _g.AddEdge(new Edge(0, 4, 0.38));
+            _g.AddEdge(new Edge(2, 3, 0.17));
+            _g.AddEdge(new Edge(1, 7, 0.19));
+            _g.AddEdge(new Edge(0, 2, 0.26));
+            _g.AddEdge(new Edge(1, 2, 0.36));
+            _g.AddEdge(new Edge(1, 3, 0.29));
+            _g.AddEdge(new Edge(2, 7, 0.34));
+            _g.AddEdge(new Edge(6, 2, 0.40));
+            _g.AddEdge(new Edge(3, 6, 0.52));
+            _g.AddEdge(new Edge(6, 0, 0.58));
+            _g.AddEdge(new Edge(6, 4, 0.93));
+        }
+    }
+
+    public class PrimMSTTest
+    {
+        readonly EdgeWeightedGraph g = TinyEdgeDirectedGraph.G;
+
+        [Fact]
+        public void TestLazyCase()
+        {
+            var primLazy = new PrimLazyMST(g);
+            var expectedEdges = new Edge[]
+            {
+                new Edge(0, 7, 0.16),
+                new Edge(2, 3, 0.17),
+                new Edge(1, 7, 0.19),
+                new Edge(0, 2, 0.26),
+                new Edge(5, 7, 0.28),
+                new Edge(4, 5, 0.35),
+                new Edge(6, 2, 0.40),
+            };
+            var expectedWeight = 1.81;
+            var actualEdges = primLazy.Edges.ToArray();
+            var actualWeight = primLazy.Weight;
+            Assert.Equal(g.V - 1, actualEdges.Length);
+            foreach (var actualEdge in actualEdges) Assert.Contains(actualEdge, expectedEdges);
+            Assert.Equal(expectedWeight, actualWeight);
+        }
+
+        [Fact]
+        public void TestEagerCase()
+        {
+            var primEager = new PrimEagerMST(g);
+            var expectedEdges = new Edge[]
+            {
+                new Edge(0, 7, 0.16),
+                new Edge(2, 3, 0.17),
+                new Edge(1, 7, 0.19),
+                new Edge(0, 2, 0.26),
+                new Edge(5, 7, 0.28),
+                new Edge(4, 5, 0.35),
+                new Edge(6, 2, 0.40),
+            };
+            var expectedWeight = 1.81;
+            var actualEdges = primEager.Edges.ToArray();
+            var actualWeight = primEager.Weight;
+            Assert.Equal(g.V - 1, actualEdges.Length);
+            foreach (var actualEdge in actualEdges) Assert.Contains(actualEdge, expectedEdges);
+            Assert.Equal(expectedWeight, actualWeight);
+        }
+    }
 }
