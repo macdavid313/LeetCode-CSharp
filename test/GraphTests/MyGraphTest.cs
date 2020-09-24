@@ -178,12 +178,7 @@ namespace GraphTests
     public class PrimMSTTest
     {
         readonly EdgeWeightedGraph g = TinyEdgeDirectedGraph.G;
-
-        [Fact]
-        public void TestLazyCase()
-        {
-            var primLazy = new PrimLazyMST(g);
-            var expectedEdges = new Edge[]
+        readonly Edge[] expectedEdges = new Edge[]
             {
                 new Edge(0, 7, 0.16),
                 new Edge(2, 3, 0.17),
@@ -193,7 +188,12 @@ namespace GraphTests
                 new Edge(4, 5, 0.35),
                 new Edge(6, 2, 0.40),
             };
-            var expectedWeight = 1.81;
+        readonly double expectedWeight = 1.81;
+
+        [Fact]
+        public void TestLazyCase()
+        {
+            var primLazy = new PrimLazyMST(g);
             var actualEdges = primLazy.Edges.ToArray();
             var actualWeight = primLazy.Weight;
             Assert.Equal(g.V - 1, actualEdges.Length);
@@ -205,7 +205,18 @@ namespace GraphTests
         public void TestEagerCase()
         {
             var primEager = new PrimEagerMST(g);
-            var expectedEdges = new Edge[]
+            var actualEdges = primEager.Edges.ToArray();
+            var actualWeight = primEager.Weight;
+            Assert.Equal(g.V - 1, actualEdges.Length);
+            foreach (var actualEdge in actualEdges) Assert.Contains(actualEdge, expectedEdges);
+            Assert.Equal(expectedWeight, actualWeight);
+        }
+    }
+
+    public class KurskalMSTTest
+    {
+        readonly EdgeWeightedGraph g = TinyEdgeDirectedGraph.G;
+        readonly Edge[] expectedEdges = new Edge[]
             {
                 new Edge(0, 7, 0.16),
                 new Edge(2, 3, 0.17),
@@ -215,9 +226,14 @@ namespace GraphTests
                 new Edge(4, 5, 0.35),
                 new Edge(6, 2, 0.40),
             };
-            var expectedWeight = 1.81;
-            var actualEdges = primEager.Edges.ToArray();
-            var actualWeight = primEager.Weight;
+        readonly double expectedWeight = 1.81;
+
+        [Fact]
+        public void TestCase1()
+        {
+            var kruskalMST = new KruskalMST(g);
+            var actualEdges = kruskalMST.Edges.ToArray();
+            var actualWeight = kruskalMST.Weight;
             Assert.Equal(g.V - 1, actualEdges.Length);
             foreach (var actualEdge in actualEdges) Assert.Contains(actualEdge, expectedEdges);
             Assert.Equal(expectedWeight, actualWeight);

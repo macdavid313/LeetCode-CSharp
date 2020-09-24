@@ -625,4 +625,79 @@ namespace MyGraph
             }
         }
     }
+
+    public class KruskalMST : IMinimumSpanningTree
+    {
+        readonly Edge[] _mst;
+        readonly double _weight;
+
+        public IEnumerable<Edge> Edges { get => _mst; }
+
+        public double Weight { get => _weight; }
+
+        public KruskalMST(EdgeWeightedGraph g)
+        {
+            g = g ?? throw new ArgumentNullException(nameof(g));
+            _mst = new Edge[g.V - 1];
+            _weight = 0.0;
+            var fill = 0;
+
+            var uf = new UF(g.V);
+            foreach (var edge in g.Edges.OrderBy(edge => edge.Weight))
+            {
+                if (fill == _mst.Length) return;
+
+                (var v, var w, var weight) = edge;
+                if (uf.Connected(v, w)) continue;
+                uf.Union(v, w);
+                _mst[fill++] = edge;
+                _weight += weight;
+            }
+        }
+
+        class UF
+        {
+            readonly int[] _id;
+            readonly int[] _rank;
+
+            public UF(int n)
+            {
+                _id = new int[n];
+                _rank = new int[n];
+                foreach (var i in Enumerable.Range(0, n))
+                {
+                    _id[i] = i;
+                    _rank[i] = 1;
+                }
+            }
+
+            public void Union(int v, int w)
+            {
+                v = Find(v);
+                w = Find(w);
+                if (v != w)
+                {
+                    if (_rank[v] < _rank[w])
+                    {
+                        _id[v] = w;
+                        _rank[w] += 1;
+                    }
+                    else
+                    {
+                        _id[w] = v;
+                        _rank[v] += 1;
+                    }
+                }
+            }
+
+            public int Find(int v)
+            {
+                if (_id[v] != v)
+                    _id[v] = Find(_id[v]);
+                return _id[v];
+            }
+
+            public bool Connected(int v, int w) => Find(v) == Find(w);
+        }
+    }
 }
