@@ -462,6 +462,14 @@ namespace MyGraph
         }
 
         public override string ToString() => string.Format("<Edge {0} -> {1}, {2}>", _v, _w, _weight);
+
+        public override bool Equals(object obj) => obj is Edge edge && Equals(edge);
+
+        public override int GetHashCode() => (_v, _w, _weight).GetHashCode();
+
+        public static bool operator ==(Edge left, Edge right) => left.Equals(right);
+
+        public static bool operator !=(Edge left, Edge right) => !(left == right);
     }
 
     public class EdgeWeightedGraph
