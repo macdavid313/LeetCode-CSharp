@@ -10,6 +10,7 @@
 |  94   |        [Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/)        |   Medium   |
 |  226  |                   [Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/)                   |    Easy    |
 |  501  |      [Find Mode in Binary Search Tree](https://leetcode.com/problems/find-mode-in-binary-search-tree/)      |    Easy    |
+|  112  |                             [Path Sum](https://leetcode.com/problems/path-sum/)                             |    Easy    |
 
 ## References
 
