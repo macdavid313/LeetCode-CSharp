@@ -6,7 +6,7 @@
  * Runtime: 104 ms, faster than 96.50% of C# online submissions for Lowest Common Ancestor of a Binary Search Tree.
  * Memory Usage: 32.5 MB, less than 5.08% of C# online submissions for Lowest Common Ancestor of a Binary Search Tree.
  * -----
- * Last Modified: Sunday, 27th September 2020 8:19:25 am
+ * Last Modified: Sunday, 27th September 2020 8:22:39 am
  * Modified By: David Gu (macdavid313@gmail.com>)
  * -----
  * Copyright (c) David Gu 2020
@@ -16,7 +16,7 @@
 using System;
 using TreeHelper;
 
-namespace LowestCommentAncestorOfABinarySearchTree
+namespace LowestCommonAncestorOfABinarySearchTree
 {
     public class Solution
     {

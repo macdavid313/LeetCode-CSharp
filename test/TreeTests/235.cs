@@ -4,7 +4,7 @@
  * Created Date: Sunday, 27th September 2020 8:02:51 am
  * Author: David Gu (macdavid313@gmail.com)
  * -----
- * Last Modified: Sunday, 27th September 2020 8:07:30 am
+ * Last Modified: Sunday, 27th September 2020 8:23:00 am
  * Modified By: David Gu (macdavid313@gmail.com>)
  * -----
  * Copyright (c) David Gu 2020
@@ -13,11 +13,11 @@
 
 using Xunit;
 using TreeHelper;
-using LowestCommentAncestorOfABinarySearchTree;
+using LowestCommonAncestorOfABinarySearchTree;
 
 namespace TreeTests
 {
-    public class LowestCommentAncestorOfABinarySearchTreeTest
+    public class LowestCommonAncestorOfABinarySearchTreeTest
     {
         readonly Solution sln = new Solution();
 
