@@ -6,7 +6,7 @@
  * Runtime: 240 ms, faster than 99.02% of C# online submissions for Find Mode in Binary Search Tree.
  * Memory Usage: 32.8 MB, less than 97.06% of C# online submissions for Find Mode in Binary Search Tree.
  * -----
- * Last Modified: Thursday, 24th September 2020 6:16:39 pm
+ * Last Modified: Saturday, 26th September 2020 9:59:45 am
  * Modified By: David Gu (macdavid313@gmail.com>)
  * -----
  * Copyright (c) David Gu 2020
@@ -14,6 +14,8 @@
 
 
 using System.Collections.Generic;
+
+using TreeHelper;
 
 namespace FindModeInBinarySearchTree
 {
@@ -67,19 +69,6 @@ namespace FindModeInBinarySearchTree
                 modes.Clear();
                 modes.Add(num);
             }
-        }
-    }
-    /* Definition for a binary tree node. */
-    public class TreeNode
-    {
-        public int val;
-        public TreeNode left;
-        public TreeNode right;
-        public TreeNode(int val = 0, TreeNode left = null, TreeNode right = null)
-        {
-            this.val = val;
-            this.left = left;
-            this.right = right;
         }
     }
 }

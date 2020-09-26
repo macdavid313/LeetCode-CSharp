@@ -8,6 +8,7 @@
 
 
 using Xunit;
+using TreeHelper;
 using InvertBinaryTree;
 
 namespace TreeTests
@@ -46,7 +47,7 @@ namespace TreeTests
                 },
             };
             var actual = sln.InvertTree(root);
-            Assert.True(TreeNode.TreeEquals(expected, actual));
+            Assert.Equal(expected, actual);
         }
     }
 }

@@ -9,6 +9,8 @@
  */
 
 
+using TreeHelper;
+
 namespace InvertBinaryTree
 {
     public class Solution
@@ -23,27 +25,6 @@ namespace InvertBinaryTree
             root.left = root.right;
             root.right = tmp;
             return root;
-        }
-    }
-
-    /* Definition for a binary tree node. */
-    public class TreeNode
-    {
-        public int val;
-        public TreeNode left;
-        public TreeNode right;
-        public TreeNode(int val = 0, TreeNode left = null, TreeNode right = null)
-        {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-
-        static public bool TreeEquals(TreeNode r1, TreeNode r2)
-        {
-            if (r1 is null && r2 is null) return true;
-            else if (r1 is null || r2 is null) return false;
-            return r1.val == r2.val && TreeEquals(r1.left, r2.left) && TreeEquals(r1.right, r2.right);
         }
     }
 }

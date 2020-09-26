@@ -8,6 +8,7 @@
 
 
 using Xunit;
+using TreeHelper;
 using BinaryTreeInorderTraversal;
 
 namespace TreeTests

@@ -4,7 +4,7 @@
  * Created Date: Thursday, 24th September 2020 5:11:10 pm
  * Author: David Gu (macdavid313@gmail.com)
  * -----
- * Last Modified: Thursday, 24th September 2020 6:07:17 pm
+ * Last Modified: Saturday, 26th September 2020 9:57:53 am
  * Modified By: David Gu (macdavid313@gmail.com>)
  * -----
  * Copyright (c) David Gu 2020
@@ -12,6 +12,7 @@
 
 
 using Xunit;
+using TreeHelper;
 using FindModeInBinarySearchTree;
 
 namespace TreeTests
