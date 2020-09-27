@@ -247,7 +247,7 @@ namespace MySort
             }
         }
 
-        static bool Less(T a, T b) => a.CompareTo(b) == -1;
+        static bool Less(T a, T b) => a.CompareTo(b) < 0;
 
         static void Swap(T[] lst, int i, int j)
         {
@@ -255,5 +255,87 @@ namespace MySort
             lst[i] = lst[j];
             lst[j] = tmp;
         }
+    }
+
+    /* public class IntegerLSD
+    {
+        const int _radix = 10;
+
+        public static void Sort(int[] nums)
+        {
+            var count = new int[_radix + 1];
+            var div = 10;
+            while (true)
+            {
+                foreach (var n in nums)
+                    count[n %  + 1] += 1;
+                for (var i = 0; i < count.Length - 1; i++)
+                    count[i + 1] += count[i];
+
+            }
+        }
+
+        int DigitAt(int num, int i)
+        {
+
+        }
+    } */
+
+    public class StringLSD
+    {
+        const int _radix = 256;
+
+        public void Sort(string[] strings, int w)
+        {
+            var aux = new string[strings.Length];
+            var count = new int[_radix + 1];
+            for (var d = w - 1; d >= 0; d--)
+            {
+                Array.Fill(count, 0);
+                for (var i = 0; i < strings.Length; i++)
+                    count[strings[i][d] + 1] += 1;
+                for (var i = 0; i < _radix; i++)
+                    count[i + 1] += count[i];
+                for (var i = 0; i < aux.Length; i++)
+                    aux[count[strings[i][d]]++] = strings[i];
+                Array.Copy(aux, strings, aux.Length);
+            }
+        }
+    }
+
+    public class StringMSD
+    {
+        const int _radix = 256;
+        const int _m = 15;
+        static string[] _aux;
+
+        public void Sort(string[] strings)
+        {
+            var count = new int[_radix + 2];
+            _aux = new string[strings.Length];
+            Sort(strings, 0, strings.Length - 1, 0);
+        }
+
+        void Sort(string[] strings, int lo, int hi, int d)
+        {
+            /* if (hi <= lo + _m)
+            {
+                MySort<string>.MyInsertionSort(strings[lo..(hi + 1)]);
+                return;
+            } */
+            if (hi <= lo) return;
+            var count = new int[_radix + 2];
+            for (var i = lo; i <= hi; i++)
+                count[CharAt(strings[i], d) + 2] += 1;
+            for (var i = 0; i < _radix + 1; i++)
+                count[i + 1] += count[i];
+            for (var i = lo; i <= hi; i++)
+                _aux[count[CharAt(strings[i], d) + 1]++] = strings[i];
+            Array.Copy(_aux, 0, strings, lo, hi - lo + 1);
+            for (var r = 0; r < _radix; r++)
+                Sort(strings, lo + count[r], lo + count[r + 1] - 1, d + 1);
+        }
+
+        int CharAt(string str, int i) => i < str.Length ? Convert.ToInt32(str[i]) : -1;
     }
 }
