@@ -13,6 +13,7 @@
 |  112  |                                       [Path Sum](https://leetcode.com/problems/path-sum/)                                       |    Easy    |
 |  113  |                                    [Path Sum II](https://leetcode.com/problems/path-sum-ii/)                                    |   Medium   |
 |  235  | [Lowest Common Ancestor of a Binary Search Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/) |    Easy    |
+|  236  |        [Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)        |   Medium   |
 
 ## References
 
