@@ -10,6 +10,7 @@
 using System;
 using Xunit;
 using MySort;
+using System.Linq;
 
 namespace SortTests
 {
@@ -210,6 +211,79 @@ namespace SortTests
             GetSampleArrayData(out int[] arr, out int[] expected);
             MySort<int>.MyHeapSort(arr);
             Assert.Equal(expected, arr);
+        }
+    }
+
+    public class StringLSDTest
+    {
+        readonly static StringLSD lsd = new StringLSD();
+        readonly static Random random = new Random();
+
+        static string GetRandomString(int len)
+        {
+            var chars = new char[len];
+            foreach (var i in Enumerable.Range(0, len))
+            {
+                var c = Convert.ToChar(random.Next(65, 91));
+                chars[i] = c;
+            }
+            return new string(chars);
+        }
+
+        [Fact]
+        public void TestCase1()
+        {
+            var strings = new string[10000];
+            foreach (var i in Enumerable.Range(0, strings.Length))
+                strings[i] = GetRandomString(10);
+            var stringsCopy = new string[10000];
+            Array.Copy(strings, stringsCopy, strings.Length);
+            Array.Sort(stringsCopy);
+            lsd.Sort(strings, 10);
+            Assert.Equal(stringsCopy, strings);
+        }
+    }
+
+    public class StringMSDTest
+    {
+        readonly static StringMSD msd = new StringMSD();
+        readonly static Random random = new Random();
+
+        static string GetRandomString(int maxLen)
+        {
+            var chars = new char[random.Next(1, maxLen + 1)];
+            foreach (var i in Enumerable.Range(0, chars.Length))
+            {
+                var c = Convert.ToChar(random.Next(65, 91));
+                chars[i] = c;
+            }
+            return new string(chars);
+        }
+
+        [Fact]
+        public void TestCase1()
+        {
+            var strings = new string[10];
+            foreach (var i in Enumerable.Range(0, strings.Length))
+                strings[i] = GetRandomString(10);
+            var stringsCopy = new string[10];
+            Array.Copy(strings, stringsCopy, strings.Length);
+            Array.Sort(stringsCopy);
+            msd.Sort(strings);
+            Assert.Equal(stringsCopy, strings);
+        }
+
+        [Fact]
+        public void TestCase2()
+        {
+            var strings = new string[10000];
+            foreach (var i in Enumerable.Range(0, strings.Length))
+                strings[i] = GetRandomString(10);
+            var stringsCopy = new string[10000];
+            Array.Copy(strings, stringsCopy, strings.Length);
+            Array.Sort(stringsCopy);
+            msd.Sort(strings);
+            Assert.Equal(stringsCopy, strings);
         }
     }
 }
