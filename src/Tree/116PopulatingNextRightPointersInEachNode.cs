@@ -6,7 +6,7 @@
  * Runtime: 92 ms, faster than 99.81% of C# online submissions for Populating Next Right Pointers in Each Node.
  * Memory Usage: 30 MB, less than 5.21% of C# online submissions for Populating Next Right Pointers in Each Node.
  * -----
- * Last Modified: Monday, 28th September 2020 5:57:04 pm
+ * Last Modified: Monday, 28th September 2020 7:06:25 pm
  * Modified By: David Gu (macdavid313@gmail.com>)
  * -----
  * Copyright (c) David Gu 2020
@@ -20,16 +20,10 @@ namespace PopulatingNextRightPointersInEachNode
         public Node Connect(Node root)
         {
             if (root is null) return root;
-            if (root.left is Node left)
-            {
-                left.next = root.right;
-                root.left = Connect(left);
-            }
-            if (root.right is Node right)
-            {
-                right.next = root.next?.left;
-                root.right = Connect(right);
-            }
+            if (root.left is Node left) left.next = root.right;
+            if (root.right is Node right) right.next = root.next?.left;
+            root.left = Connect(root.left);
+            root.right = Connect(root.right);
             return root;
         }
     }
