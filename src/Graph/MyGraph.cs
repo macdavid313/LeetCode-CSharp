@@ -693,4 +693,102 @@ namespace MyGraph
             public bool Connected(int v, int w) => Find(v) == Find(w);
         }
     }
+
+    public class EdgeWeightedDirectedGraph
+    {
+        readonly int _V;
+        int _E;
+        readonly List<Edge>[] _adj;
+
+        public int V { get => _V; }
+
+        public int E { get => _E; }
+
+        public List<Edge> Adj(int v) => _adj[v];
+
+        public EdgeWeightedDirectedGraph(int V)
+        {
+            _V = V;
+            _E = 0;
+            _adj = new List<Edge>[_V];
+        }
+
+        public void AddEdge(Edge edge)
+        {
+            (var from, var _, var _) = edge;
+            _adj[from].Add(edge);
+            _E += 1;
+        }
+
+        public IEnumerable<Edge> Edges
+        {
+            get
+            {
+                foreach (var from in Enumerable.Range(0, _V))
+                {
+                    foreach (var edge in _adj[from]) yield return edge;
+                }
+            }
+        }
+    }
+
+    interface IShortestPath
+    {
+        double DistTo(int v);
+        bool HasPathTo(int v);
+        IEnumerable<Edge> PathTo(int v);
+    }
+
+    public class DijkstraShortestPath : IShortestPath
+    {
+        readonly EdgeWeightedDirectedGraph _g;
+        readonly Edge[] _edgeTo;
+        readonly double[] _distTo;
+        readonly IndexPriorityQueue<double> _pq;
+
+        public double DistTo(int v) => _distTo[v];
+        public bool HasPathTo(int v) => _edgeTo[v] != null;
+        public IEnumerable<Edge> PathTo(int v)
+        {
+            while (_edgeTo[v] is Edge edge)
+            {
+                (var from, var _, var _) = edge;
+                yield return edge;
+                v = from;
+            }
+        }
+
+        public DijkstraShortestPath(EdgeWeightedDirectedGraph g, int s)
+        {
+            _g = g;
+            _edgeTo = new Edge[g.V];
+            _distTo = new double[g.V];
+            Array.Fill(_distTo, double.PositiveInfinity);
+            _distTo[s] = 0.0;
+            _pq = IndexPriorityQueue<double>.IndexMinPQ(g.V);
+
+            _pq.Enqueue(s, 0.0);
+            while (!_pq.IsEmpty)
+            {
+                (var v, var _) = _pq.Dequeue();
+                Relax(v);
+            }
+        }
+
+        void Relax(int v)
+        {
+            foreach (var edge in _g.Adj(v))
+            {
+                (var _, var w, var weight) = edge;
+                var newWeight = weight + _distTo[v];
+                if (_distTo[w] > newWeight)
+                {
+                    _distTo[w] = newWeight;
+                    _edgeTo[w] = edge;
+                    if (_pq.Contains(w)) _pq.ChangeKey(w, _distTo[w]);
+                    else _pq.Enqueue(w, _distTo[w]);
+                }
+            }
+        }
+    }
 }
