@@ -334,7 +334,7 @@ namespace MySort
     public class StringMSD
     {
         const int _radix = 256;
-        const int _m = 15;
+        // const int _m = 15;
         static string[] _aux;
 
         public void Sort(string[] strings)
