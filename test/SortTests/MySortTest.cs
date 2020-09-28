@@ -11,206 +11,221 @@ using System;
 using Xunit;
 using MySort;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace SortTests
 {
-    public class MySortTest
+    public static class SampleArray<T>
     {
-        readonly static int _randomSize = 10000;
-        readonly Random _random = new Random();
+        const int _defaultLen = 10000;
 
-        void GetSampleArrayData(out int[] arr, out int[] expected)
+        public static void Get(out T[] arr, out T[] arrCopy, Func<T> generator, int len = _defaultLen)
         {
-            arr = new int[_randomSize];
-            for (var i = 0; i < _randomSize; i++)
-            {
-                arr[i] = _random.Next(0, _randomSize);
-            }
-            var arrCopy = new int[_randomSize];
-            Array.Copy(arr, arrCopy, _randomSize);
+            arr = new T[len];
+            arrCopy = new T[len];
+            foreach (var i in Enumerable.Range(0, len))
+                arr[i] = generator();
+            Array.Copy(arr, arrCopy, len);
+        }
+    }
+
+    public class SelectionSortTest
+    {
+        static readonly Random _random = new Random();
+
+        [Fact]
+        public void TestCaseAscending()
+        {
+            SampleArray<int>.Get(out int[] arr, out int[] arrCopy, () => _random.Next(0, 100));
             Array.Sort(arrCopy);
-            expected = arrCopy;
+            var sort = new SelectionSort<int>();
+            sort.Sort(arr);
+            Assert.Equal(arr, arrCopy);
         }
 
         [Fact]
-        public void MySelectionSortTest()
+        public void TestCaseDescending()
         {
-            var expected = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            var actual = new int[] { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
-            MySort<int>.MySelectionSort(actual);
-            Assert.Equal(expected, actual);
+            SampleArray<int>.Get(out int[] arr, out int[] arrCopy, () => _random.Next(0, 100));
+            Array.Sort(arrCopy, new Comparison<int>((x, y) => y.CompareTo(x)));
+            var sort = new SelectionSort<int>(Comparer<int>.Create(new Comparison<int>((x, y) => y.CompareTo(x))));
+            sort.Sort(arr);
+            Assert.Equal(arr, arrCopy);
+        }
+    }
+
+    public class InsertionSortTest
+    {
+        static readonly Random _random = new Random();
+
+        [Fact]
+        public void TestCaseAscending()
+        {
+            SampleArray<char>.Get(out char[] arr, out char[] arrCopy, () => Convert.ToChar(_random.Next(65, 91)));
+            Array.Sort(arrCopy);
+            var sort = new InsertionSort<char>();
+            sort.Sort(arr);
+            Assert.Equal(arr, arrCopy);
         }
 
         [Fact]
-        public void MySelectionSortRandomTest()
+        public void TestCaseDescending()
         {
-            GetSampleArrayData(out int[] arr, out int[] expected);
-            MySort<int>.MySelectionSort(arr);
-            Assert.Equal(expected, arr);
+            SampleArray<char>.Get(out char[] arr, out char[] arrCopy, () => Convert.ToChar(_random.Next(65, 91)));
+            Array.Sort(arrCopy, new Comparison<char>((x, y) => y.CompareTo(x)));
+            var sort = new InsertionSort<char>(Comparer<char>.Create(new Comparison<char>((x, y) => y.CompareTo(x))));
+            sort.Sort(arr);
+            Assert.Equal(arr, arrCopy);
+        }
+    }
+
+    public class ShellSortTest
+    {
+        static readonly Random _random = new Random();
+
+        [Fact]
+        public void TestCaseAscending()
+        {
+            SampleArray<int>.Get(out int[] arr, out int[] arrCopy, () => _random.Next(0, 100));
+            Array.Sort(arrCopy);
+            var sort = new ShellSort<int>();
+            sort.Sort(arr);
+            Assert.Equal(arr, arrCopy);
         }
 
         [Fact]
-        public void InsertionSortTest()
+        public void TestCaseDescending()
         {
-            var expected = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            var actual = new int[] { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
-            MySort<int>.MyInsertionSort(actual);
-            Assert.Equal(expected, actual);
+            SampleArray<int>.Get(out int[] arr, out int[] arrCopy, () => _random.Next(0, 100));
+            Array.Sort(arrCopy, new Comparison<int>((x, y) => y.CompareTo(x)));
+            var sort = new ShellSort<int>(Comparer<int>.Create(new Comparison<int>((x, y) => y.CompareTo(x))));
+            sort.Sort(arr);
+            Assert.Equal(arr, arrCopy);
+        }
+    }
+
+    public class BubbleSortTest
+    {
+        static readonly Random _random = new Random();
+
+        [Fact]
+        public void TestCaseAscending()
+        {
+            SampleArray<char>.Get(out char[] arr, out char[] arrCopy, () => Convert.ToChar(_random.Next(65, 91)));
+            Array.Sort(arrCopy);
+            var sort = new BubbleSort<char>();
+            sort.Sort(arr);
+            Assert.Equal(arr, arrCopy);
         }
 
         [Fact]
-        public void MyInsertionSortRandomTest()
+        public void TestCaseDescending()
         {
-            GetSampleArrayData(out int[] arr, out int[] expected);
-            MySort<int>.MyInsertionSort(arr);
-            Assert.Equal(expected, arr);
+            SampleArray<char>.Get(out char[] arr, out char[] arrCopy, () => Convert.ToChar(_random.Next(65, 91)));
+            Array.Sort(arrCopy, new Comparison<char>((x, y) => y.CompareTo(x)));
+            var sort = new BubbleSort<char>(Comparer<char>.Create(new Comparison<char>((x, y) => y.CompareTo(x))));
+            sort.Sort(arr);
+            Assert.Equal(arr, arrCopy);
+        }
+    }
+
+    public class MergeSortTest
+    {
+        static readonly Random _random = new Random();
+
+        [Fact]
+        public void TestCaseAscending()
+        {
+            SampleArray<int>.Get(out int[] arr, out int[] arrCopy, () => _random.Next(0, 100));
+            Array.Sort(arrCopy);
+            var sort = new MergeSort<int>();
+            var actual = sort.MSort(arr);
+            Assert.Equal(arrCopy, actual);
         }
 
         [Fact]
-        public void ShellSortTest()
+        public void TestCaseDescending()
         {
-            var expected = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            var actual = new int[] { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
-            MySort<int>.MyShellSort(actual);
-            Assert.Equal(expected, actual);
+            SampleArray<int>.Get(out int[] arr, out int[] arrCopy, () => _random.Next(0, 100));
+            Array.Sort(arrCopy, new Comparison<int>((x, y) => y.CompareTo(x)));
+            var sort = new MergeSort<int>(Comparer<int>.Create(new Comparison<int>((x, y) => y.CompareTo(x))));
+            var actual = sort.MSort(arr);
+            Assert.Equal(arrCopy, actual);
+        }
+    }
+
+    public class QuickSortTest
+    {
+        static readonly Random _random = new Random();
+
+        [Fact]
+        public void TestCaseAscending()
+        {
+            SampleArray<char>.Get(out char[] arr, out char[] arrCopy, () => Convert.ToChar(_random.Next(65, 91)));
+            Array.Sort(arrCopy);
+            var sort = new QuickSort<char>();
+            sort.Sort(arr);
+            Assert.Equal(arr, arrCopy);
         }
 
         [Fact]
-        public void MyShellSortRandomTest()
+        public void TestCaseDescending()
         {
-            GetSampleArrayData(out int[] arr, out int[] expected);
-            MySort<int>.MyShellSort(arr);
-            Assert.Equal(expected, arr);
+            SampleArray<char>.Get(out char[] arr, out char[] arrCopy, () => Convert.ToChar(_random.Next(65, 91)));
+            Array.Sort(arrCopy, new Comparison<char>((x, y) => y.CompareTo(x)));
+            var sort = new QuickSort<char>(Comparer<char>.Create(new Comparison<char>((x, y) => y.CompareTo(x))));
+            sort.Sort(arr);
+            Assert.Equal(arr, arrCopy);
+        }
+    }
+
+    public class Quick3WaySortTest
+    {
+        static readonly Random _random = new Random();
+
+        [Fact]
+        public void TestCaseAscending()
+        {
+            SampleArray<int>.Get(out int[] arr, out int[] arrCopy, () => _random.Next(0, 100));
+            Array.Sort(arrCopy);
+            var sort = new Quick3WaySort<int>();
+            sort.Sort(arr);
+            Assert.Equal(arr, arrCopy);
         }
 
         [Fact]
-        public void BubbleSortTest()
+        public void TestCaseDescending()
         {
-            var expected = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            var actual = new int[] { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
-            MySort<int>.MyBubbleSort(actual);
-            Assert.Equal(expected, actual);
+            SampleArray<int>.Get(out int[] arr, out int[] arrCopy, () => _random.Next(0, 100));
+            Array.Sort(arrCopy, new Comparison<int>((x, y) => y.CompareTo(x)));
+            var sort = new Quick3WaySort<int>(Comparer<int>.Create(new Comparison<int>((x, y) => y.CompareTo(x))));
+            sort.Sort(arr);
+            Assert.Equal(arr, arrCopy);
+        }
+    }
+
+    public class HeapSortTest
+    {
+        static readonly Random _random = new Random();
+
+        [Fact]
+        public void TestCaseAscending()
+        {
+            SampleArray<char>.Get(out char[] arr, out char[] arrCopy, () => Convert.ToChar(_random.Next(65, 91)));
+            Array.Sort(arrCopy);
+            var sort = new HeapSort<char>();
+            sort.Sort(arr);
+            Assert.Equal(arr, arrCopy);
         }
 
         [Fact]
-        public void MyBubbleSortRandomTest()
+        public void TestCaseDescending()
         {
-            GetSampleArrayData(out int[] arr, out int[] expected);
-            MySort<int>.MyBubbleSort(arr);
-            Assert.Equal(expected, arr);
-        }
-
-        [Fact]
-        public void MergeSortTestCase1()
-        {
-            var lst = new int[] { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
-            var expected = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            var actual = MySort<int>.MyMergeSort(lst);
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void MergeSortTestCase2()
-        {
-            var lst = new int[] { 10, 10, 9, 9, 8, 8, 7, 7 };
-            var expected = new int[] { 7, 7, 8, 8, 9, 9, 10, 10 };
-            var actual = MySort<int>.MyMergeSort(lst);
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void MyMergeSortRandomTest()
-        {
-            GetSampleArrayData(out int[] arr, out int[] expected);
-            var actual = MySort<int>.MyMergeSort(arr);
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void QuickSortTestCase1()
-        {
-            var actual = new int[] { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
-            var expected = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            MySort<int>.MyQuickSort(actual);
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void QuickSortTestCase2()
-        {
-            var actual = new int[] { 10, 10, 9, 9, 8, 8, 7, 7 };
-            var expected = new int[] { 7, 7, 8, 8, 9, 9, 10, 10 };
-            MySort<int>.MyQuickSort(actual);
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void MyQuickSortRandomTest()
-        {
-            GetSampleArrayData(out int[] arr, out int[] expected);
-            MySort<int>.MyQuickSort(arr);
-            Assert.Equal(expected, arr);
-        }
-
-        [Fact]
-        public void Quick3WaySortTestCase1()
-        {
-            var actual = new int[] { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
-            var expected = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            MySort<int>.MyQuickSort(actual);
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void Quick3WaySortTestCase2()
-        {
-            var actual = new int[] { 10, 10, 9, 9, 8, 8, 7, 7 };
-            var expected = new int[] { 7, 7, 8, 8, 9, 9, 10, 10 };
-            MySort<int>.MyQuick3WaySort(actual);
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void MyQuick3WaySortRandomTest()
-        {
-            GetSampleArrayData(out int[] arr, out int[] expected);
-            MySort<int>.MyQuick3WaySort(arr);
-            Assert.Equal(expected, arr);
-        }
-
-        [Fact]
-        public void HeapSortTestCase1()
-        {
-            var actual = new int[] { 0, 1, 2, 3, 4, 5, 6, 7 };
-            var expected = new int[] { 0, 1, 2, 3, 4, 5, 6, 7 };
-            MySort<int>.MyHeapSort(actual);
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void HeapSortTestCase2()
-        {
-            var actual = new int[] { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
-            var expected = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            MySort<int>.MyHeapSort(actual);
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void HeapSortTestCase3()
-        {
-            var actual = new int[] { 10, 10, 9, 9, 8, 8, 7, 7 };
-            var expected = new int[] { 7, 7, 8, 8, 9, 9, 10, 10 };
-            MySort<int>.MyHeapSort(actual);
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void MyHeapSortRandomTest()
-        {
-            GetSampleArrayData(out int[] arr, out int[] expected);
-            MySort<int>.MyHeapSort(arr);
-            Assert.Equal(expected, arr);
+            SampleArray<char>.Get(out char[] arr, out char[] arrCopy, () => Convert.ToChar(_random.Next(65, 91)));
+            Array.Sort(arrCopy, new Comparison<char>((x, y) => y.CompareTo(x)));
+            var sort = new HeapSort<char>(Comparer<char>.Create(new Comparison<char>((x, y) => y.CompareTo(x))));
+            sort.Sort(arr);
+            Assert.Equal(arr, arrCopy);
         }
     }
 

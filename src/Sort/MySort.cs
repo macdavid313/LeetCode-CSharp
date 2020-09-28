@@ -8,78 +8,128 @@
 
 
 using System;
+using System.Collections.Generic;
 
 namespace MySort
 {
-    public static class MySort<T> where T : IComparable<T>
+    public abstract class Sorting<T>
     {
-        /*  https://oeis.org/A033622 */
-        readonly static int[] gapSequence = new int[] { 3905, 2161, 929, 505, 209, 109, 41, 19, 5, 1 };
+        readonly IComparer<T> _comparer;
         readonly static Random random = new Random();
 
-        public static void MySelectionSort(T[] lst)
+        protected Sorting(IComparer<T> comparer = null)
         {
-            if (lst is null) throw new ArgumentNullException(nameof(lst));
-            if (lst.Length <= 1) return;
+            _comparer = comparer is null ? Comparer<T>.Default : comparer;
+        }
 
-            for (var i = 0; i < lst.Length; i++)
+        public abstract void Sort(T[] arr);
+
+        protected static void Shuffle(T[] arr)
+        {
+            for (var i = 0; i < arr.Length; i++)
+            {
+                var idx = random.Next(0, i + 1);
+                Swap(arr, i, idx);
+            }
+        }
+
+        protected bool Less(T a, T b) => _comparer.Compare(a, b) < 0;
+
+        protected int Compare(T a, T b) => _comparer.Compare(a, b);
+
+        protected static void Swap(T[] arr, int i, int j)
+        {
+            T tmp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = tmp;
+        }
+    }
+
+    public class SelectionSort<T> : Sorting<T>
+    {
+        public SelectionSort(IComparer<T> comparer = null) : base(comparer) { }
+
+        public override void Sort(T[] arr)
+        {
+            if (arr is null) throw new ArgumentNullException(nameof(arr));
+            if (arr.Length <= 1) return;
+
+            for (var i = 0; i < arr.Length; i++)
             {
                 var jMin = i;
-                for (var j = i + 1; j < lst.Length; j++)
+                for (var j = i + 1; j < arr.Length; j++)
                 {
-                    if (Less(lst[j], lst[jMin]))
+                    if (Less(arr[j], arr[jMin]))
                         jMin = j;
                 }
                 if (jMin != i)
-                    Swap(lst, i, jMin);
+                    Swap(arr, i, jMin);
             }
         }
+    }
 
-        public static void MyInsertionSort(T[] lst)
+    public class InsertionSort<T> : Sorting<T>
+    {
+        public InsertionSort(IComparer<T> comparer = null) : base(comparer) { }
+
+        public override void Sort(T[] arr)
         {
-            if (lst is null) throw new ArgumentNullException(nameof(lst));
-            if (lst.Length <= 1) return;
+            if (arr is null) throw new ArgumentNullException(nameof(arr));
+            if (arr.Length <= 1) return;
 
-            for (var i = 1; i < lst.Length; i++)
+            for (var i = 1; i < arr.Length; i++)
             {
-                for (var j = i; j > 0 && Less(lst[j], lst[j - 1]); j--)
+                for (var j = i; j > 0 && Less(arr[j], arr[j - 1]); j--)
                 {
-                    Swap(lst, j, j - 1);
+                    Swap(arr, j, j - 1);
                 }
             }
         }
+    }
 
-        public static void MyShellSort(T[] lst)
+    public class ShellSort<T> : Sorting<T>
+    {
+        /*  https://oeis.org/A033622 */
+        readonly static int[] gapSequence = new int[] { 3905, 2161, 929, 505, 209, 109, 41, 19, 5, 1 };
+
+        public ShellSort(IComparer<T> comparer = null) : base(comparer) { }
+
+        public override void Sort(T[] arr)
         {
-            if (lst is null) throw new ArgumentNullException(nameof(lst));
-            if (lst.Length <= 1) return;
+            if (arr is null) throw new ArgumentNullException(nameof(arr));
+            if (arr.Length <= 1) return;
 
             foreach (var gap in gapSequence)
             {
-                for (var i = gap; i < lst.Length; i++)
+                for (var i = gap; i < arr.Length; i++)
                 {
-                    for (var j = i; j >= gap && Less(lst[j], lst[j - gap]); j -= gap)
+                    for (var j = i; j >= gap && Less(arr[j], arr[j - gap]); j -= gap)
                     {
-                        Swap(lst, j, j - gap);
+                        Swap(arr, j, j - gap);
                     }
                 }
             }
         }
+    }
 
-        public static void MyBubbleSort(T[] lst)
+    public class BubbleSort<T> : Sorting<T>
+    {
+        public BubbleSort(IComparer<T> comparer = null) : base(comparer) { }
+
+        public override void Sort(T[] arr)
         {
-            if (lst is null) throw new ArgumentNullException(nameof(lst));
-            if (lst.Length <= 1) return;
+            if (arr is null) throw new ArgumentNullException(nameof(arr));
+            if (arr.Length <= 1) return;
 
-            var n = lst.Length;
+            var n = arr.Length;
             while (true)
             {
                 var swapped = false;
                 for (var i = 1; i < n; i++)
                 {
-                    if (Less(lst[i], lst[i - 1]))
+                    if (Less(arr[i], arr[i - 1]))
                     {
-                        Swap(lst, i, i - 1);
+                        Swap(arr, i, i - 1);
                         if (!swapped) swapped = true;
                     }
                 }
@@ -87,19 +137,26 @@ namespace MySort
                 else n -= 1;
             }
         }
+    }
 
-        public static T[] MyMergeSort(T[] lst)
+    public class MergeSort<T> : Sorting<T>
+    {
+        public MergeSort(IComparer<T> comparer = null) : base(comparer) { }
+
+        public T[] MSort(T[] lst)
         {
             if (lst is null) throw new ArgumentNullException(nameof(lst));
             if (lst.Length <= 1) return lst;
 
             var mid = lst.Length / 2;
-            var left = MyMergeSort(lst[0..mid]);
-            var right = MyMergeSort(lst[mid..lst.Length]);
+            var left = MSort(lst[0..mid]);
+            var right = MSort(lst[mid..lst.Length]);
             return MyMergeSortMerge(left, right);
         }
 
-        static T[] MyMergeSortMerge(T[] left, T[] right)
+        public override void Sort(T[] arr) => throw new NotImplementedException();
+
+        T[] MyMergeSortMerge(T[] left, T[] right)
         {
             var aux = new T[left.Length + right.Length];
             var mid = left.Length;
@@ -130,27 +187,32 @@ namespace MySort
             }
             return aux;
         }
+    }
 
-        public static void MyQuickSort(T[] lst)
+    public class QuickSort<T> : Sorting<T>
+    {
+        public QuickSort(IComparer<T> comparer = null) : base(comparer) { }
+
+        public override void Sort(T[] arr)
         {
-            if (lst is null) throw new ArgumentNullException(nameof(lst));
-            if (lst.Length <= 1) return;
+            if (arr is null) throw new ArgumentNullException(nameof(arr));
+            if (arr.Length <= 1) return;
 
-            MyShuffle(lst);
-            MyQuickSort(lst, 0, lst.Length - 1);
+            Shuffle(arr);
+            Sort(arr, 0, arr.Length - 1);
         }
 
-        static void MyQuickSort(T[] lst, int lo, int hi)
+        void Sort(T[] arr, int lo, int hi)
         {
             if (lo < hi)
             {
-                var p = MyQuickSortPartition(lst, lo, hi);
-                MyQuickSort(lst, lo, p);
-                MyQuickSort(lst, p + 1, hi);
+                var p = Partition(arr, lo, hi);
+                Sort(arr, lo, p);
+                Sort(arr, p + 1, hi);
             }
         }
 
-        static int MyQuickSortPartition(T[] lst, int lo, int hi)
+        int Partition(T[] lst, int lo, int hi)
         {
             var pivot = lst[(lo + hi) / 2];
             var i = lo - 1;
@@ -163,26 +225,31 @@ namespace MySort
                 Swap(lst, i, j);
             }
         }
+    }
 
-        public static void MyQuick3WaySort(T[] lst)
+    public class Quick3WaySort<T> : Sorting<T>
+    {
+        public Quick3WaySort(IComparer<T> comparer = null) : base(comparer) { }
+
+        public override void Sort(T[] lst)
         {
             if (lst is null) throw new ArgumentNullException(nameof(lst));
             if (lst.Length <= 1) return;
-            MyShuffle(lst);
-            MyQuick3WaySort(lst, 0, lst.Length - 1);
+            Shuffle(lst);
+            Sort(lst, 0, lst.Length - 1);
         }
 
-        static void MyQuick3WaySort(T[] lst, int lo, int hi)
+        void Sort(T[] lst, int lo, int hi)
         {
             if (lo < hi)
             {
-                MyQuick3WaySortPartition(lst, lo, hi, out int left, out int right);
-                MyQuick3WaySort(lst, lo, left - 1);
-                MyQuick3WaySort(lst, right + 1, hi);
+                Partition(lst, lo, hi, out int left, out int right);
+                Sort(lst, lo, left - 1);
+                Sort(lst, right + 1, hi);
             }
         }
 
-        static void MyQuick3WaySortPartition(T[] lst, int lo, int hi, out int left, out int right)
+        void Partition(T[] lst, int lo, int hi, out int left, out int right)
         {
             var pivot = lst[(lo + hi) / 2];
             var i = lo;
@@ -190,25 +257,28 @@ namespace MySort
             right = hi;
             while (i <= right)
             {
-                switch (lst[i].CompareTo(pivot))
+                var cmp = Compare(lst[i], pivot);
+                if (cmp < 0)
                 {
-                    case -1:
-                        Swap(lst, i, left);
-                        i += 1;
-                        left += 1;
-                        continue;
-                    case 1:
-                        Swap(lst, i, right);
-                        right -= 1;
-                        continue;
-                    default:
-                        i += 1;
-                        continue;
+                    Swap(lst, i, left);
+                    i += 1;
+                    left += 1;
                 }
+                else if (cmp > 0)
+                {
+                    Swap(lst, i, right);
+                    right -= 1;
+                }
+                else i += 1;
             }
         }
+    }
 
-        public static void MyHeapSort(T[] lst)
+    public class HeapSort<T> : Sorting<T>
+    {
+        public HeapSort(IComparer<T> comparer = null) : base(comparer) { }
+
+        public override void Sort(T[] lst)
         {
             if (lst is null) throw new ArgumentNullException(nameof(lst));
             if (lst.Length <= 1) return;
@@ -225,7 +295,7 @@ namespace MySort
             }
         }
 
-        static void Heapify(T[] lst, int len, int k)
+        void Heapify(T[] lst, int len, int k)
         {
             while (2 * k + 1 < len)
             {
@@ -237,49 +307,7 @@ namespace MySort
                 k = j;
             }
         }
-
-        static void MyShuffle(T[] lst)
-        {
-            for (var i = 0; i < lst.Length; i++)
-            {
-                var idx = random.Next(0, i + 1);
-                Swap(lst, i, idx);
-            }
-        }
-
-        static bool Less(T a, T b) => a.CompareTo(b) < 0;
-
-        static void Swap(T[] lst, int i, int j)
-        {
-            T tmp = lst[i];
-            lst[i] = lst[j];
-            lst[j] = tmp;
-        }
     }
-
-    /* public class IntegerLSD
-    {
-        const int _radix = 10;
-
-        public static void Sort(int[] nums)
-        {
-            var count = new int[_radix + 1];
-            var div = 10;
-            while (true)
-            {
-                foreach (var n in nums)
-                    count[n %  + 1] += 1;
-                for (var i = 0; i < count.Length - 1; i++)
-                    count[i + 1] += count[i];
-
-            }
-        }
-
-        int DigitAt(int num, int i)
-        {
-
-        }
-    } */
 
     public class StringLSD
     {
@@ -311,7 +339,6 @@ namespace MySort
 
         public void Sort(string[] strings)
         {
-            var count = new int[_radix + 2];
             _aux = new string[strings.Length];
             Sort(strings, 0, strings.Length - 1, 0);
         }
@@ -320,7 +347,9 @@ namespace MySort
         {
             /* if (hi <= lo + _m)
             {
-                MySort<string>.MyInsertionSort(strings[lo..(hi + 1)]);
+                var comparer = Comparer<string>.Create(new Comparison<string>((x, y) => CharAt(x, d).CompareTo(CharAt(y, d))));
+                var insertionSort = new InsertionSort<string>(comparer);
+                insertionSort.Sort(strings[lo..(hi + 1)]);
                 return;
             } */
             if (hi <= lo) return;
