@@ -18,6 +18,7 @@
 |  114  |             [Flatten Binary Tree to Linked List](https://leetcode.com/problems/flatten-binary-tree-to-linked-list/)             |   Medium   |
 |  117  | [Populating Next Right Pointers in Each Node II](https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/) |   Medium   |
 |  530  |             [Minimum Absolute Difference in BST](https://leetcode.com/problems/minimum-absolute-difference-in-bst/)             |    Easy    |
+|  654  |                            [Maximum Binary Tree](https://leetcode.com/problems/maximum-binary-tree/)                            |   Medium   |
 
 ## References
 
