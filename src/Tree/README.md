@@ -21,6 +21,7 @@
 |  654  |                                        [Maximum Binary Tree](https://leetcode.com/problems/maximum-binary-tree/)                                        |   Medium   |
 |  105  |  [Construct Binary Tree from Preorder and Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)  |   Medium   |
 |  106  | [Construct Binary Tree from Inorder and Postorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/) |   Medium   |
+|  98   |                                [Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/)                                |   Medium   |
 
 ## References
 
