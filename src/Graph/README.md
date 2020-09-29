@@ -2,11 +2,12 @@
 
 [Problems](https://leetcode.com/tag/graph/) dedicated to **Graph**.
 
-|  ID   |                                  Name                                   | Difficulty |
-| :---: | :---------------------------------------------------------------------: | :--------: |
-|  841  |     [Keys and Rooms](https://leetcode.com/problems/keys-and-rooms/)     |   Medium   |
-|  207  |    [Course Schedule](https://leetcode.com/problems/course-schedule/)    |   Medium   |
-|  210  | [Course Schedule II](https://leetcode.com/problems/course-schedule-ii/) |   Medium   |
+|  ID   |                                     Name                                      | Difficulty |
+| :---: | :---------------------------------------------------------------------------: | :--------: |
+|  841  |        [Keys and Rooms](https://leetcode.com/problems/keys-and-rooms/)        |   Medium   |
+|  207  |       [Course Schedule](https://leetcode.com/problems/course-schedule/)       |   Medium   |
+|  210  |    [Course Schedule II](https://leetcode.com/problems/course-schedule-ii/)    |   Medium   |
+|  332  | [Reconstruct Itinerary](https://leetcode.com/problems/reconstruct-itinerary/) |   Medium   |
 
 ## References
 
@@ -16,3 +17,4 @@
 * Wikipedia, [Minimum spanning tree](https://en.wikipedia.org/wiki/Minimum_spanning_tree)
 * Wikipedia, [Prim's algorithm](https://en.wikipedia.org/wiki/Prim%27s_algorithm)
 * Wikipedia, [Shortest path problem](https://en.wikipedia.org/wiki/Shortest_path_problem)
+* Wikipedia, [Eulerian path](https://en.wikipedia.org/wiki/Eulerian_path)
