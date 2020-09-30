@@ -3,10 +3,10 @@
  * Project: Interval
  * Created Date: Wednesday, 30th September 2020 9:53:07 am
  * Author: David Gu (macdavid313@gmail.com)
- * Runtime: 260 ms, faster than 80.65% of C# online submissions for Merge Intervals.
- * Memory Usage: 34.1 MB, less than 5.04% of C# online submissions for Merge Intervals.
+ * Runtime: 256 ms, faster than 90.55% of C# online submissions for Merge Intervals.
+ * Memory Usage: 34.2 MB, less than 5.04% of C# online submissions for Merge Intervals.
  * -----
- * Last Modified: Wednesday, 30th September 2020 10:49:06 am
+ * Last Modified: Wednesday, 30th September 2020 10:51:52 am
  * Modified By: David Gu (macdavid313@gmail.com>)
  * -----
  * Copyright (c) David Gu 2020
@@ -39,7 +39,7 @@ namespace MergeIntervals
                 var b = interval[1];
 
                 if (b <= r) continue;
-                if (l <= a && a <= r) merged[^1][1] = b;
+                if (l <= a && a <= r) last[1] = b;
                 if (a > r) merged.Add(interval);
             }
             return merged.ToArray();
