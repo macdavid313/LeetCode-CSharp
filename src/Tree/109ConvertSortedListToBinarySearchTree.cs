@@ -3,21 +3,53 @@
  * Project: Tree
  * Created Date: Thursday, 1st October 2020 7:03:54 pm
  * Author: David Gu (macdavid313@gmail.com)
- * Runtime: 104 ms, faster than 58.96% of C# online submissions for Convert Sorted List to Binary Search Tree.
- * Memory Usage: 27.7 MB, less than 11.57% of C# online submissions for Convert Sorted List to Binary Search Tree.
+ * Runtime: 96 ms, faster than 88.81% of C# online submissions for Convert Sorted List to Binary Search Tree.
+ * Memory Usage: 27.5 MB, less than 15.30% of C# online submissions for Convert Sorted List to Binary Search Tree.
  * -----
- * Last Modified: Thursday, 1st October 2020 7:34:18 pm
+ * Last Modified: Thursday, 1st October 2020 7:37:07 pm
  * Modified By: David Gu (macdavid313@gmail.com>)
  * -----
  * Copyright (c) David Gu 2020
  */
 
 
-
 using TreeHelper;
 
 namespace ConvertSortedListToBinarySearchTree
 {
+
+    public class Solution
+    {
+        public TreeNode SortedListToBST(ListNode head) => SortedListToBST(head, null);
+
+        TreeNode SortedListToBST(ListNode head, ListNode tail)
+        {
+            if (head == tail) return null;
+            var mid = GetMid(head, tail);
+            var root = new TreeNode(mid.val)
+            {
+                left = SortedListToBST(head, mid),
+                right = SortedListToBST(mid.next, tail)
+            };
+            return root;
+        }
+
+        ListNode GetMid(ListNode head, ListNode tail)
+        {
+            var slow = head;
+            var fast = head;
+            while (fast != tail && fast.next != tail)
+            {
+                slow = slow.next;
+                fast = fast.next.next;
+            }
+            return slow;
+        }
+    }
+
+    /*
+    * Runtime: 104 ms, faster than 58.96% of C# online submissions for Convert Sorted List to Binary Search Tree.
+    * Memory Usage: 27.7 MB, less than 11.57% of C# online submissions for Convert Sorted List to Binary Search Tree.
     public class Solution
     {
         public TreeNode SortedListToBST(ListNode head) => SortedListToBST(ref head, 0, GetLength(head) - 1);
@@ -43,36 +75,6 @@ namespace ConvertSortedListToBinarySearchTree
                 head = head.next;
             }
             return count;
-        }
-    }
-
-    /*
-    * Runtime: 96 ms, faster than 88.81% of C# online submissions for Convert Sorted List to Binary Search Tree.
-    * Memory Usage: 27.5 MB, less than 15.30% of C# online submissions for Convert Sorted List to Binary Search Tree.
-    public class Solution
-    {
-        public TreeNode SortedListToBST(ListNode head) => SortedListToBST(head, null);
-
-        TreeNode SortedListToBST(ListNode head, ListNode tail)
-        {
-            if (head == tail) return null;
-            var mid = GetMid(head, tail);
-            var root = new TreeNode(mid.val);
-            root.left = SortedListToBST(head, mid);
-            root.right = SortedListToBST(mid.next, tail);
-            return root;
-        }
-
-        ListNode GetMid(ListNode head, ListNode tail)
-        {
-            var slow = head;
-            var fast = head;
-            while (fast != tail && fast.next != tail)
-            {
-                slow = slow.next;
-                fast = fast.next.next;
-            }
-            return slow;
         }
     } */
 
