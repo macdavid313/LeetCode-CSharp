@@ -3,8 +3,10 @@
  * Project: Heap
  * Created Date: Saturday, 3rd October 2020 9:22:31 am
  * Author: David Gu (macdavid313@gmail.com)
+ * Runtime: 96 ms, faster than 92.39% of C# online submissions for Kth Largest Element in an Array.
+ * Memory Usage: 25.8 MB, less than 26.90% of C# online submissions for Kth Largest Element in an Array.
  * -----
- * Last Modified: Saturday, 3rd October 2020 9:32:15 am
+ * Last Modified: Saturday, 3rd October 2020 9:37:44 am
  * Modified By: David Gu (macdavid313@gmail.com>)
  * -----
  * Copyright (c) David Gu 2020
