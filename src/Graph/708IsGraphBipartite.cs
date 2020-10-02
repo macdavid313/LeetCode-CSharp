@@ -6,7 +6,7 @@
  * Runtime: 116 ms, faster than 86.76% of C# online submissions for Is Graph Bipartite?.
  * Memory Usage: 29.4 MB, less than 8.09% of C# online submissions for Is Graph Bipartite?.
  * -----
- * Last Modified: Friday, 2nd October 2020 11:38:23 am
+ * Last Modified: Friday, 2nd October 2020 11:38:47 am
  * Modified By: David Gu (macdavid313@gmail.com>)
  * -----
  * Copyright (c) David Gu 2020
@@ -15,7 +15,6 @@
 
 using System;
 using System.Linq;
-using System.Threading.Tasks.Dataflow;
 
 namespace IsGraphBipartite
 {
