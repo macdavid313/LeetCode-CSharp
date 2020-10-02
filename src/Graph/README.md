@@ -9,6 +9,7 @@
 |  210  |    [Course Schedule II](https://leetcode.com/problems/course-schedule-ii/)    |   Medium   |
 |  332  | [Reconstruct Itinerary](https://leetcode.com/problems/reconstruct-itinerary/) |   Medium   |
 |  708  |    [Is Graph Bipartite](https://leetcode.com/problems/is-graph-bipartite/)    |   Medium   |
+|  886  |  [Possible Bipartition](https://leetcode.com/problems/possible-bipartition/)  |   Medium   |
 
 ## References
 
