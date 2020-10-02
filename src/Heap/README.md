@@ -6,6 +6,7 @@
 | :---: | :-----------------------------------------------------------------------------------------------: | :--------: |
 |  23   |            [Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/)            |    Hard    |
 |  703  | [Kth Largest Element In a Stream](https://leetcode.com/problems/kth-largest-element-in-a-stream/) |    Easy    |
+|  215  | [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/) |   Medium   |
 
 ## References
 
