@@ -3,22 +3,37 @@
  * Project: Tree
  * Created Date: Sunday, 27th September 2020 8:22:16 am
  * Author: David Gu (macdavid313@gmail.com)
- * Runtime: 104 ms, faster than 82.17% of C# online submissions for Lowest Common Ancestor of a Binary Tree.
- * Memory Usage: 31.3 MB, less than 5.95% of C# online submissions for Lowest Common Ancestor of a Binary Tree.
+ * Runtime: 128 ms, faster than 29.04% of C# online submissions for Lowest Common Ancestor of a Binary Tree.
+ * Memory Usage: 28.6 MB, less than 38.76% of C# online submissions for Lowest Common Ancestor of a Binary Tree.
  * -----
- * Last Modified: Sunday, 27th September 2020 5:38:35 pm
+ * Last Modified: Saturday, 3rd October 2020 10:31:56 am
  * Modified By: David Gu (macdavid313@gmail.com>)
  * -----
  * Copyright (c) David Gu 2020
  */
 
 
-using System;
-using System.Collections.Generic;
 using TreeHelper;
 
 namespace LowestCommentAncestorOfABinaryTree
 {
+    public class Solution
+    {
+        public TreeNode LowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q)
+        {
+            if (root is null) return null;
+            if (root == p || root == q) return root;
+            var left = LowestCommonAncestor(root.left, p, q);
+            var right = LowestCommonAncestor(root.right, p, q);
+            if (left is null && right is null) return null;
+            if (left is object && right is object) return root;
+            return left is null ? right : left;
+        }
+    }
+
+    /*
+    * Runtime: 104 ms, faster than 82.17% of C# online submissions for Lowest Common Ancestor of a Binary Tree.
+    * Memory Usage: 31.3 MB, less than 5.95% of C# online submissions for Lowest Common Ancestor of a Binary Tree.
     public class Solution
     {
         public TreeNode LowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q)
@@ -60,7 +75,7 @@ namespace LowestCommentAncestorOfABinaryTree
                 DFS(right, parents);
             }
         }
-    }
+    } */
 
     /*
     * Runtime: 108 ms, faster than 62.07% of C# online submissions for Lowest Common Ancestor of a Binary Tree.

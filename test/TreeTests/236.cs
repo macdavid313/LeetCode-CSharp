@@ -4,7 +4,7 @@
  * Created Date: Sunday, 27th September 2020 8:24:14 am
  * Author: David Gu (macdavid313@gmail.com)
  * -----
- * Last Modified: Sunday, 27th September 2020 8:28:23 am
+ * Last Modified: Saturday, 3rd October 2020 10:36:34 am
  * Modified By: David Gu (macdavid313@gmail.com>)
  * -----
  * Copyright (c) David Gu 2020
@@ -41,8 +41,8 @@ namespace TreeTests
                     right = new TreeNode(8)
                 }
             };
-            var p = new TreeNode(5);
-            var q = new TreeNode(1);
+            var p = root.left;
+            var q = root.right;
             Assert.Equal(3, sln.LowestCommonAncestor(root, p, q).val);
         }
 
@@ -66,8 +66,8 @@ namespace TreeTests
                     right = new TreeNode(8)
                 }
             };
-            var p = new TreeNode(5);
-            var q = new TreeNode(4);
+            var p = root.left;
+            var q = root.left.right.right;
             Assert.Equal(5, sln.LowestCommonAncestor(root, p, q).val);
         }
     }
