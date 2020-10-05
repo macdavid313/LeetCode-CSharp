@@ -9,6 +9,7 @@ A set of [problems](https://leetcode.com/tag/linked-list/) dedicated to **Linked
 |  206  |              [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/)              |    Easy    |
 |  19   | [Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/) |   Medium   |
 |  148  |                  [Sort List](https://leetcode.com/problems/sort-list/submissions/)                  |   Medium   |
+|  24   |              [Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs/)              |   Medium   |
 
 ## References
 
