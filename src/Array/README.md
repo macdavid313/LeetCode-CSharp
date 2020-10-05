@@ -6,3 +6,4 @@
 | :---: | :----------------------------------------------: | :--------: |
 |   1   | [Two Sum](https://leetcode.com/problems/two-sum) |    Easy    |
 |  15   |   [3Sum](https://leetcode.com/problems/3sum/)    |   Medium   |
+|  18   |   [4Sum](https://leetcode.com/problems/4sum/)    |   Medium   |
