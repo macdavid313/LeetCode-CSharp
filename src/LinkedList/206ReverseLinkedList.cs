@@ -3,15 +3,13 @@
  * Project: LinkedList
  * Created Date: Thursday, 27th August 2020 5:20:10 pm
  * Author: David Gu (macdavid313@gmail.com)
- * Iterative Solution
  * Runtime: 92 ms, faster than 87.09% of C# online submissions for Reverse Linked List.
  * Memory Usage: 24.2 MB, less than 84.59% of C# online submissions for Reverse Linked List.
- * Recursive Solution
- * Runtime: 100 ms, faster than 54.69% of C# online submissions for Reverse Linked List.
- * Memory Usage: 24.4 MB, less than 49.90% of C# online submissions for Reverse Linked List.
  * Copyright (c) David Gu 2020
  */
 
+
+using LinkedListHelper;
 
 namespace ReverseLinkedList
 {
@@ -33,6 +31,8 @@ namespace ReverseLinkedList
     }
 
     /* recursive solution
+    * Runtime: 100 ms, faster than 54.69% of C# online submissions for Reverse Linked List.
+    * Memory Usage: 24.4 MB, less than 49.90% of C# online submissions for Reverse Linked List.
     public class Solution
     {
         public ListNode ReverseList(ListNode head)
@@ -45,17 +45,4 @@ namespace ReverseLinkedList
             return newHead;
         }
     } */
-
-
-    /* Definition for singly-linked list. */
-    public class ListNode
-    {
-        public int val;
-        public ListNode next;
-        public ListNode(int val = 0, ListNode next = null)
-        {
-            this.val = val;
-            this.next = next;
-        }
-    }
 }

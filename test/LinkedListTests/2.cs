@@ -8,6 +8,7 @@
 
 
 using Xunit;
+using LinkedListHelper;
 using AddTwoNumbers;
 
 namespace LinkedListTests
