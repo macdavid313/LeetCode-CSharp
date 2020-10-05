@@ -6,7 +6,7 @@
  * Runtime: 316 ms, faster than 50.62% of C# online submissions for 3Sum.
  * Memory Usage: 47.4 MB, less than 8.35% of C# online submissions for 3Sum.
  * -----
- * Last Modified: Monday, 5th October 2020 3:05:23 pm
+ * Last Modified: Monday, 5th October 2020 3:06:03 pm
  * Modified By: David Gu (macdavid313@gmail.com>)
  * -----
  * Copyright (c) David Gu 2020
@@ -15,7 +15,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace ThreeSum
 {
