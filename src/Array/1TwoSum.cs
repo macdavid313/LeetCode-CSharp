@@ -6,7 +6,7 @@
  * Runtime: 232 ms, faster than 98.41% of C# online submissions for Two Sum.
  * Memory Usage: 31.7 MB, less than 9.48% of C# online submissions for Two Sum.
  * -----
- * Last Modified: Monday, 5th October 2020 2:42:25 pm
+ * Last Modified: Monday, 5th October 2020 2:56:59 pm
  * Modified By: David Gu (macdavid313@gmail.com>)
  * -----
  * Copyright (c) David Gu 2020
@@ -14,6 +14,8 @@
 
 
 using System;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace TwoSum
 {
