@@ -2,6 +2,10 @@
 
 A few [problems](https://leetcode.com/tag/sort/) tagged as **Sort**.
 
+|  ID   |                           Name                            | Difficulty |
+| :---: | :-------------------------------------------------------: | :--------: |
+|  75   | [Sort Colors](https://leetcode.com/problems/sort-colors/) |   Medium   |
+
 ## References
 
 * Wikipedia, [Sorting Algorithms](https://en.wikipedia.org/wiki/Sorting_algorithm)
