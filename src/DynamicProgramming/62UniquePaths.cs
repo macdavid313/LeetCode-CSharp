@@ -3,8 +3,10 @@
  * Project: DynamicProgramming
  * Created Date: Thursday, 8th October 2020 8:59:25 am
  * Author: David Gu (macdavid313@gmail.com)
+ * Runtime: 36 ms, faster than 94.14% of C# online submissions for Unique Paths.
+ * Memory Usage: 15.2 MB, less than 19.41% of C# online submissions for Unique Paths.
  * -----
- * Last Modified: Thursday, 8th October 2020 9:27:12 am
+ * Last Modified: Thursday, 8th October 2020 9:30:09 am
  * Modified By: David Gu (macdavid313@gmail.com>)
  * -----
  * Copyright (c) David Gu 2020
