@@ -9,6 +9,7 @@ A set of [problems](https://leetcode.com/tag/dynamic-programming/) dedicated to 
 |  70   |               [Climbing Stairs](https://leetcode.com/problems/climbing-stairs/)               |    Easy    |
 |  486  |            [Predict The Winner](https://leetcode.com/problems/predict-the-winner/)            |   Medium   |
 |  53   |              [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)              |    Easy    |
+|  62   |                  [Unique Paths](https://leetcode.com/problems/unique-paths/)                  |   Medium   |
 
 ## References
 
