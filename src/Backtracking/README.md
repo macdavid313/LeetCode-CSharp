@@ -16,6 +16,7 @@ A set of [problems](https://leetcode.com/tag/backtracking/) tagged as **Backtrac
 |  37   |                         [Sudoku Solver](https://leetcode.com/problems/sudoku-solver/)                         |    Hard    |
 |  47   |                       [Permutations II](https://leetcode.com/problems/permutations-ii/)                       |   Medium   |
 |  78   |                               [Subsets](https://leetcode.com/problems/subsets/)                               |   Medium   |
+|  980  |                      [Unique Paths III](https://leetcode.com/problems/unique-paths-iii/)                      |    hard    |
 
 ## References
 
