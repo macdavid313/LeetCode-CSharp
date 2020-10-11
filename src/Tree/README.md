@@ -26,6 +26,7 @@
 |  108  |                 [Convert Sorted Array to Binary Search Tree](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/)                 |    Easy    |
 |  109  |                  [Convert Sorted List to Binary Search Tree](https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/)                  |   Medium   |
 |  834  |                                   [Sum of Distances in Tree](https://leetcode.com/problems/sum-of-distances-in-tree/)                                   |    Hard    |
+|  545  |                                    [Boundry of Binary Tree](https://leetcode.com/problems/boundary-of-binary-tree/)                                     |   Medium   |
 
 ## References
 
