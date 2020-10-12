@@ -13,6 +13,7 @@ A set of [problems](https://leetcode.com/tag/dynamic-programming/) dedicated to 
 |  63   |               [Unique Paths II](https://leetcode.com/problems/unique-paths-ii/)               |   Medium   |
 |  64   |              [Minimum Path Sum](https://leetcode.com/problems/minimum-path-sum/)              |   Medium   |
 |  416  |    [Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/)    |   Medium   |
+|  91   |                   [Decode Ways](https://leetcode.com/problems/decode-ways/)                   |   Medium   |
 
 ## References
 
