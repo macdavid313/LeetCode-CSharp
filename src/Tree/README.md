@@ -30,6 +30,7 @@
 |  298  |                   [Binary Tree Longest Consecutive Sequence](https://leetcode.com/problems/binary-tree-longest-consecutive-sequence/)                   |   Medium   |
 |  297  |                      [Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)                      |    Hard    |
 |  652  |                                    [Find Duplicate Subtrees](https://leetcode.com/problems/find-duplicate-subtrees/)                                    |   Medium   |
+|  606  |                        [Constructing String from Binary Tree](https://leetcode.com/problems/construct-string-from-binary-tree/)                         |    Easy    |
 
 ## References
 
