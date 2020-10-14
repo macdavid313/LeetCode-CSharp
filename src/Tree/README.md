@@ -28,6 +28,7 @@
 |  834  |                                   [Sum of Distances in Tree](https://leetcode.com/problems/sum-of-distances-in-tree/)                                   |    Hard    |
 |  545  |                                    [Boundry of Binary Tree](https://leetcode.com/problems/boundary-of-binary-tree/)                                     |   Medium   |
 |  298  |                   [Binary Tree Longest Consecutive Sequence](https://leetcode.com/problems/binary-tree-longest-consecutive-sequence/)                   |   Medium   |
+|  297  |                      [Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)                      |    Hard    |
 
 ## References
 
